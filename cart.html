@@ -137,7 +137,8 @@
                         </div>
 
                         <div id="pickup-info" class="pickup-info" style="display: none;">
-                            <p class="pickup-label"><i data-lucide="info"></i> Filialni tanlang:</p>
+                            <p class="pickup-label"><i data-lucide="info"></i> <span
+                                    data-i18n="cart.pickup_select_branch">Filialni tanlang:</span></p>
                             <select id="branch-select" class="branch-select" onchange="updatePickupBranch()">
                                 <!-- Branches will be populated by JS -->
                             </select>
@@ -275,11 +276,11 @@
     <script src="script.js"></script>
     <script>
         const BRANCHES = [
-            { id: 1, name: "Bosh ofis (Amir Temur)", address: "Amir Temur ko'chasi, 123", city: "Toshkent", phone: "+998 71 123 45 67" },
-            { id: 2, name: "Chilonzor TechHub", address: "Bunyodkor ko'chasi, 45", city: "Toshkent", phone: "+998 71 223 45 67" },
-            { id: 3, name: "Samarqand Grand Store", address: "Registon ko'chasi, 12", city: "Samarqand", phone: "+998 66 123 45 67" },
-            { id: 4, name: "Farg'ona Valley Center", address: "Mustaqillik ko'chasi, 88", city: "Farg'ona", phone: "+998 73 123 45 67" },
-            { id: 5, name: "Buxoro Silk Tech", address: "Bahouddin Naqshband ko'chasi, 5", city: "Buxoro", phone: "+998 65 123 45 67" }
+            { id: 1, nameKey: "cart.branch_1", address: "Amir Temur ko'chasi, 123", cityKey: "cart.city_tashkent", phone: "+998 71 123 45 67" },
+            { id: 2, nameKey: "cart.branch_2", address: "Bunyodkor ko'chasi, 45", cityKey: "cart.city_tashkent", phone: "+998 71 223 45 67" },
+            { id: 3, nameKey: "cart.branch_3", address: "Registon ko'chasi, 12", cityKey: "cart.city_samarkand", phone: "+998 66 123 45 67" },
+            { id: 4, nameKey: "cart.branch_4", address: "Mustaqillik ko'chasi, 88", cityKey: "cart.city_fergana", phone: "+998 73 123 45 67" },
+            { id: 5, nameKey: "cart.branch_5", address: "Bahouddin Naqshband ko'chasi, 5", cityKey: "cart.city_bukhara", phone: "+998 65 123 45 67" }
         ];
 
         let deliveryMethod = 'delivery'; // 'delivery' or 'pickup'
@@ -309,12 +310,13 @@
 
         function populateBranches() {
             const select = document.getElementById('branch-select');
-            if (select.children.length > 0) return; // Already populated
+            select.innerHTML = ''; // Clear existing options to re-render with new lang
 
             BRANCHES.forEach(branch => {
                 const option = document.createElement('option');
                 option.value = branch.id;
-                option.textContent = `${branch.city}: ${branch.name}`;
+                option.textContent = `${t(branch.cityKey)}: ${t(branch.nameKey)}`;
+                if (branch.id === selectedBranchId) option.selected = true;
                 select.appendChild(option);
             });
         }
@@ -326,8 +328,8 @@
             const addressEl = document.getElementById('selected-branch-address');
 
             addressEl.innerHTML = `
-                <p><strong>Manzil:</strong> ${branch.address}</p>
-                <p><strong>Tel:</strong> ${branch.phone}</p>
+                <p><strong>${t('cart.branch_address')}</strong> ${branch.address}</p>
+                <p><strong>${t('cart.branch_phone')}</strong> ${branch.phone}</p>
             `;
         }
 
@@ -485,6 +487,13 @@
         const originalUpdateContent = window.updateContent;
         window.updateContent = function () {
             if (originalUpdateContent) originalUpdateContent();
+
+            // Re-render branches and pickup info with new language
+            if (deliveryMethod === 'pickup') {
+                populateBranches();
+                updatePickupBranch();
+            }
+
             renderCartPage();
         }
 
