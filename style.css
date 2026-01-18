@@ -1265,8 +1265,13 @@ button {
 
 .product-card__btn {
     margin-top: auto;
-    padding: 0.6rem;
+    padding: 0.5rem;
     font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    white-space: nowrap;
 }
 
 .tier-badge {
