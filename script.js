@@ -591,17 +591,37 @@ function initFilterListeners() {
     var priceMinVal = document.querySelector(".price-values span:first-child");
     var priceMaxVal = document.querySelector(".price-values span:last-child");
 
+    const minGap = 50;
+    const sliderTrack = document.querySelector(".slider-track");
+    const sliderMaxValue = document.querySelector(".range-min").max;
+
+    function fillColor() {
+        if (!rangeMin || !rangeMax || !sliderTrack) return;
+        const percent1 = (rangeMin.value / sliderMaxValue) * 100;
+        const percent2 = (rangeMax.value / sliderMaxValue) * 100;
+        sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}%, #2563eb ${percent1}%, #2563eb ${percent2}%, #dadae5 ${percent2}%)`;
+    }
+
     if (rangeMin && rangeMax) {
         rangeMin.addEventListener("input", function () {
+            if (parseInt(rangeMax.value) - parseInt(rangeMin.value) <= minGap) {
+                rangeMin.value = parseInt(rangeMax.value) - minGap;
+            }
             filters.minPrice = parseInt(this.value);
             if (priceMinVal) priceMinVal.textContent = "$" + this.value;
+            fillColor();
             applyFilters();
         });
         rangeMax.addEventListener("input", function () {
+            if (parseInt(rangeMax.value) - parseInt(rangeMin.value) <= minGap) {
+                rangeMax.value = parseInt(rangeMin.value) + minGap;
+            }
             filters.maxPrice = parseInt(this.value);
             if (priceMaxVal) priceMaxVal.textContent = "$" + this.value;
+            fillColor();
             applyFilters();
         });
+        fillColor(); // Init
     }
 
     // Reset button
