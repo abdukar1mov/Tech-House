@@ -1158,9 +1158,9 @@ button {
 
 .product-card__image-box {
     position: relative;
-    padding: 1.5rem;
+    padding: 0.5rem;
     background-color: #f8fafc;
-    height: 180px;
+    height: 220px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1209,7 +1209,7 @@ button {
 }
 
 .product-card__title {
-    font-size: 1rem;
+    font-size: 0.938rem;
     font-weight: 700;
     color: var(--primary);
     line-height: 1.4;
@@ -1252,8 +1252,8 @@ button {
 }
 
 .price-current {
-    font-size: 1.25rem;
-    font-weight: 800;
+    font-size: 1.5rem;
+    font-weight: 900;
     color: var(--primary);
 }
 
@@ -1265,7 +1265,8 @@ button {
 
 .product-card__btn {
     margin-top: auto;
-    padding: 0.75rem;
+    padding: 0.6rem;
+    font-size: 0.875rem;
 }
 
 .tier-badge {
