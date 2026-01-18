@@ -1274,6 +1274,17 @@ button {
     white-space: nowrap;
 }
 
+/* Specific fix for categories page buttons */
+.product-card .btn {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
 .tier-badge {
     background-color: var(--accent-soft);
     color: var(--accent);
