@@ -575,7 +575,7 @@ function initFilterListeners() {
     var checkboxes = document.querySelectorAll(".sidebar__list input[type='checkbox']");
     checkboxes.forEach(function (checkbox) {
         checkbox.addEventListener("change", function () {
-            var catName = this.closest(".checkbox-container").querySelector(".label-text").textContent.trim();
+            var catName = this.value;
             if (this.checked) {
                 filters.categories.push(catName);
             } else {
