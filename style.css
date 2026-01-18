@@ -64,7 +64,7 @@
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}   
+}
 
 @media screen and (min-width: 1024px) {
     :root {
@@ -410,10 +410,32 @@ button {
 
 .header__top-links {
     display: flex;
-    gap: 1.5rem;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+    /* Ensure text is visible if bg is dark */
 }
 
-/* Main Header */
+.nav__mobile-lang {
+    display: none;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+@media screen and (max-width: 992px) {
+    .nav__mobile-lang {
+        display: block;
+    }
+}
+
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-right: 0.5rem;
+}
+
 .header__main {
     padding: 1.8rem 0;
 }
@@ -491,6 +513,80 @@ button {
     font-size: var(--small-font-size);
     color: var(--primary);
     outline: none;
+}
+
+/* Search Results Dropdown */
+.header__search {
+    position: relative;
+}
+
+.search-results {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border);
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+    padding: 0.5rem;
+    display: none;
+}
+
+.search-results.active {
+    display: block;
+}
+
+.search-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.search-item:hover {
+    background-color: var(--muted);
+}
+
+.search-item__img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    background-color: #f3f4f6;
+    border-radius: 6px;
+    padding: 4px;
+}
+
+.search-item__info {
+    flex: 1;
+}
+
+.search-item__name {
+    display: block;
+    font-size: var(--small-font-size);
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 2px;
+}
+
+.search-item__price {
+    display: block;
+    font-size: var(--smaller-font-size);
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.search-no-results {
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--muted-foreground);
+    font-size: var(--small-font-size);
 }
 
 /* User Actions */
@@ -716,7 +812,7 @@ button {
 
 .hero__title {
     color: white;
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 2rem;
@@ -732,6 +828,28 @@ button {
 .hero__actions {
     display: flex;
     gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.hero__stats {
+    display: flex;
+    gap: 3rem;
+}
+
+.hero__stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero__stat-val {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero__stat-label {
+    font-size: 0.875rem;
+    opacity: 0.9;
 }
 
 @media screen and (max-width: 768px) {
@@ -1796,6 +1914,7 @@ button {
     margin: 1rem 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -1860,7 +1979,7 @@ button {
 .membership__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    gap: 1.5rem;
     align-items: stretch;
 }
 
@@ -2002,11 +2121,13 @@ button {
     }
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 768px) {
     .membership__grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
 }
+
 
 /* Perks Section */
 .membership__perks {
@@ -2596,6 +2717,14 @@ button {
     opacity: 1;
 }
 
+.partners__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+}
+
 .partner-logo img {
     width: 100%;
     height: auto;
@@ -2603,7 +2732,9 @@ button {
 
 @media screen and (max-width: 1024px) {
     .about-hero__grid {
+        grid-template-columns: 1fr;
         gap: 2rem;
+        text-align: center;
     }
 
     .about-hero__image {
@@ -2634,9 +2765,7 @@ button {
     }
 
     .branch-number {
-        font-size: 5rem;
-        top: -20px;
-        right: -10px;
+        display: none;
     }
 
     .branch-meta {
@@ -4009,7 +4138,7 @@ button {
     border: 2px solid white;
     cursor: pointer;
     pointer-events: auto;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* Mozilla Firefox Slider Thumb */
@@ -4022,33 +4151,35 @@ button {
     background: #2563eb;
     cursor: pointer;
     pointer-events: auto;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
-/ *   L a n g u a g e   S w i t c h e r   * /  
- . l a n g - s w i t c h e r   {  
-         d i s p l a y :   f l e x ;  
-         a l i g n - i t e m s :   c e n t e r ;  
-         g a p :   0 . 5 r e m ;  
-         m a r g i n - l e f t :   1 r e m ;  
- }  
-  
- . l a n g - b t n   {  
-         p a d d i n g :   0 . 2 5 r e m   0 . 5 r e m ;  
-         f o n t - s i z e :   0 . 8 7 5 r e m ;  
-         f o n t - w e i g h t :   6 0 0 ;  
-         c o l o r :   v a r ( - - m u t e d - f o r e g r o u n d ) ;  
-         b o r d e r :   1 p x   s o l i d   t r a n s p a r e n t ;  
-         b o r d e r - r a d i u s :   4 p x ;  
-         c u r s o r :   p o i n t e r ;  
-         t r a n s i t i o n :   v a r ( - - t r a n s i t i o n ) ;  
- }  
-  
- . l a n g - b t n : h o v e r   {  
-         c o l o r :   v a r ( - - p r i m a r y ) ;  
- }  
-  
- . l a n g - b t n . a c t i v e   {  
-         b a c k g r o u n d - c o l o r :   v a r ( - - a c c e n t ) ;  
-         c o l o r :   w h i t e ;  
- }  
- 
+
+/* Language Switcher */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.lang-btn {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    background: white;
+    transition: var(--transition);
+}
+
+.lang-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.lang-btn.active {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}

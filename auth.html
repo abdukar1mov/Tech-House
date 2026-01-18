@@ -12,17 +12,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-title-key="title.auth">
 
     <!-- Header -->
     <header class="header">
         <!-- Top Bar -->
         <div class="header__top">
             <div class="container header__top-container">
-                <p class="header__top-text">Bepul yetkazib berish 500,000 so'mdan yuqori xaridlar uchun!</p>
+                <p class="header__top-text" data-i18n="header.free_delivery">Bepul yetkazib berish 500,000 so'mdan
+                    yuqori xaridlar uchun!</p>
                 <div class="header__top-links">
-                    <a href="help.html">Yordam</a>
-                    <a href="membership.html">A'zolik</a>
+                    <div class="lang-switcher">
+                        <button class="lang-btn" onclick="changeLanguage('uz')" data-lang="uz">UZ</button>
+                        <button class="lang-btn active" onclick="changeLanguage('en')" data-lang="en">EN</button>
+                    </div>
+                    <a href="help.html" data-i18n="nav.help">Help</a>
+                    <a href="membership.html" data-i18n="nav.membership">Membership</a>
                 </div>
             </div>
         </div>
@@ -34,14 +39,15 @@
                     <div class="logo-box">TH</div>
                     <div class="logo-text">
                         <span class="logo-title">Tech House</span>
-                        <span class="logo-subtitle">Smart Living Solutions</span>
+                        <span class="logo-subtitle" data-i18n="header.subtitle">Smart Living Solutions</span>
                     </div>
                 </a>
 
                 <div class="header__search">
                     <div class="search-box">
                         <i data-lucide="search"></i>
-                        <input type="text" placeholder="Mahsulotlarni qidiring...">
+                        <input type="text" data-i18n-placeholder="header.search_placeholder"
+                            placeholder="Mahsulotlarni qidiring...">
                     </div>
                 </div>
 
@@ -64,70 +70,86 @@
         <nav class="nav">
             <div class="container nav__container">
                 <ul class="nav__list">
-                    <li><a href="index.html" class="nav__link">Bosh sahifa</a></li>
-                    <li><a href="about.html" class="nav__link">Biz haqimizda</a></li>
-                    <li><a href="categories.html" class="nav__link">Kategoriyalar</a></li>
-                    <li><a href="#" class="nav__link">Solishtirish</a></li>
-                    <li><a href="membership.html" class="nav__link">A'zolik</a></li>
-                    <li><a href="help.html" class="nav__link">Yordam</a></li>
+                    <li><a href="index.html" class="nav__link" data-i18n="nav.home">Bosh sahifa</a></li>
+                    <li><a href="about.html" class="nav__link" data-i18n="nav.about">Biz haqimizda</a></li>
+                    <li><a href="categories.html" class="nav__link" data-i18n="nav.categories">Kategoriyalar</a></li>
+                    <li><a href="membership.html" class="nav__link" data-i18n="nav.membership">A'zolik</a></li>
+                    <li><a href="help.html" class="nav__link" data-i18n="nav.help">Yordam</a></li>
                 </ul>
+                <div class="nav__mobile-lang">
+                    <div class="lang-switcher">
+                        <button class="lang-btn" onclick="changeLanguage('uz')" data-lang="uz">UZ</button>
+                        <button class="lang-btn active" onclick="changeLanguage('en')" data-lang="en">EN</button>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
 
     <main class="main-content">
         <div class="container container--small">
-            <h1 class="auth-title">Akkaunt</h1>
+            <h1 class="auth-title" data-i18n="auth.title">Akkaunt</h1>
 
             <div class="auth-card">
                 <div class="auth-tabs">
-                    <button class="auth-tab active" data-tab="login">Kirish</button>
-                    <button class="auth-tab" data-tab="register">Ro'yxatdan o'tish</button>
+                    <button class="auth-tab active" data-tab="login" data-i18n="auth.tab_login">Kirish</button>
+                    <button class="auth-tab" data-tab="register" data-i18n="auth.tab_register">Ro'yxatdan
+                        o'tish</button>
                 </div>
 
                 <!-- Login Form -->
                 <form id="login-form" class="auth-form active">
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" id="login-email" placeholder="Email manzilingiz" required>
+                        <input type="email" id="login-email" data-i18n-placeholder="auth.form_email"
+                            placeholder="Email manzilingiz" required>
                     </div>
                     <div class="form-group">
-                        <label>Parol</label>
-                        <input type="password" id="login-password" placeholder="Parolingiz" required>
+                        <label data-i18n="auth.form_password">Parol</label>
+                        <input type="password" id="login-password" data-i18n-placeholder="auth.form_password"
+                            placeholder="Parolingiz" required>
                     </div>
-                    <button type="submit" class="btn btn--dark auth-submit">Kirish</button>
-                    <a href="#" class="forgot-password">Parolni unutdingizmi?</a>
+                    <button type="submit" class="btn btn--dark auth-submit" data-i18n="auth.btn_login">Kirish</button>
+                    <a href="#" class="forgot-password" data-i18n="auth.forgot_password">Parolni unutdingizmi?</a>
                 </form>
 
                 <!-- Register Form -->
                 <form id="register-form" class="auth-form">
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Ism</label>
-                            <input type="text" id="reg-firstname" placeholder="Ismingiz" required>
+                            <label data-i18n="auth.form_firstname">Ism</label>
+                            <input type="text" id="reg-firstname" data-i18n-placeholder="auth.form_firstname"
+                                placeholder="Ismingiz" required>
                         </div>
                         <div class="form-group">
-                            <label>Familiya</label>
-                            <input type="text" id="reg-lastname" placeholder="Familiyangiz" required>
+                            <label data-i18n="auth.form_lastname">Familiya</label>
+                            <input type="text" id="reg-lastname" data-i18n-placeholder="auth.form_lastname"
+                                placeholder="Familiyangiz" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Telefon raqami</label>
-                        <input type="tel" id="reg-phone" placeholder="Telefon raqamingiz" required>
+                        <label data-i18n="auth.form_phone">Telefon raqami</label>
+                        <input type="tel" id="reg-phone" data-i18n-placeholder="auth.form_phone"
+                            placeholder="Telefon raqamingiz" required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" id="reg-email" placeholder="Email manzilingiz" required>
+                        <input type="email" id="reg-email" data-i18n-placeholder="auth.form_email"
+                            placeholder="Email manzilingiz" required>
                     </div>
                     <div class="form-group">
-                        <label>Parol</label>
-                        <input type="password" id="reg-password" placeholder="Parol yarating" required>
+                        <label data-i18n="auth.form_password">Parol</label>
+                        <input type="password" id="reg-password" data-i18n-placeholder="auth.form_password_create"
+                            placeholder="Parol yarating" required>
                     </div>
                     <div class="form-group">
-                        <label>Parolni tasdiqlang</label>
-                        <input type="password" id="reg-confirm-password" placeholder="Parolni qayta kiriting" required>
+                        <label data-i18n="auth.form_password_confirm">Parolni tasdiqlang</label>
+                        <input type="password" id="reg-confirm-password"
+                            data-i18n-placeholder="auth.form_password_confirm" placeholder="Parolni qayta kiriting"
+                            required>
                     </div>
-                    <button type="submit" class="btn btn--dark auth-submit">Ro'yxatdan o'tish</button>
+                    <button type="submit" class="btn btn--dark auth-submit" data-i18n="auth.tab_register">Ro'yxatdan
+                        o'tish</button>
                 </form>
             </div>
         </div>
@@ -137,11 +159,12 @@
     <footer class="footer">
         <div class="container">
             <div class="footer__bottom" style="border: none; padding-top: 2rem;">
-                <p>&copy; 2026 Tech House. Barcha huquqlar himoyalangan.</p>
+                <p data-i18n="footer.copyright">&copy; 2026 Tech House. Barcha huquqlar himoyalangan.</p>
             </div>
         </div>
     </footer>
 
+    <script src="translations.js"></script>
     <script src="script.js"></script>
     <script>
         // Tab switching logic

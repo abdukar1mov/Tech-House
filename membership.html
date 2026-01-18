@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-title-key="title.membership">
     <!-- Header -->
     <header class="header">
         <!-- Top Bar -->
@@ -22,8 +22,12 @@
             <div class="container header__top-container">
                 <p class="header__top-text">Bepul yetkazib berish 500,000 so'mdan yuqori xaridlar uchun!</p>
                 <div class="header__top-links">
-                    <a href="help.html">Yordam</a>
-                    <a href="membership.html">A'zolik</a>
+                    <div class="lang-switcher">
+                        <button class="lang-btn" onclick="changeLanguage('uz')" data-lang="uz">UZ</button>
+                        <button class="lang-btn active" onclick="changeLanguage('en')" data-lang="en">EN</button>
+                    </div>
+                    <a href="help.html" data-i18n="nav.help">Help</a>
+                    <a href="membership.html" data-i18n="nav.membership">Membership</a>
                 </div>
             </div>
         </div>
@@ -65,13 +69,18 @@
         <nav class="nav">
             <div class="container nav__container">
                 <ul class="nav__list">
-                    <li><a href="index.html" class="nav__link">Bosh sahifa</a></li>
-                    <li><a href="about.html" class="nav__link">Biz haqimizda</a></li>
-                    <li><a href="categories.html" class="nav__link">Kategoriyalar</a></li>
-                    <li><a href="#" class="nav__link">Solishtirish</a></li>
-                    <li><a href="membership.html" class="nav__link active">A'zolik</a></li>
-                    <li><a href="help.html" class="nav__link">Yordam</a></li>
+                    <li><a href="index.html" class="nav__link" data-i18n="nav.home">Bosh sahifa</a></li>
+                    <li><a href="about.html" class="nav__link" data-i18n="nav.about">Biz haqimizda</a></li>
+                    <li><a href="categories.html" class="nav__link" data-i18n="nav.categories">Kategoriyalar</a></li>
+                    <li><a href="membership.html" class="nav__link active" data-i18n="nav.membership">A'zolik</a></li>
+                    <li><a href="help.html" class="nav__link" data-i18n="nav.help">Yordam</a></li>
                 </ul>
+                <div class="nav__mobile-lang">
+                    <div class="lang-switcher">
+                        <button class="lang-btn" onclick="changeLanguage('uz')" data-lang="uz">UZ</button>
+                        <button class="lang-btn active" onclick="changeLanguage('en')" data-lang="en">EN</button>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
@@ -80,8 +89,9 @@
         <section class="membership-section section">
             <div class="container">
                 <div class="section__header">
-                    <h1 class="membership__title">A'zolik dasturi</h1>
-                    <p class="membership__subtitle">O'zingizga mos a'zolik darajasini tanlang va maxsus imtiyozlardan
+                    <h1 class="membership__title" data-i18n="membership.title">A'zolik dasturi</h1>
+                    <p class="membership__subtitle" data-i18n="membership.subtitle">O'zingizga mos a'zolik darajasini
+                        tanlang va maxsus imtiyozlardan
                         foydalaning</p>
                 </div>
 
@@ -89,104 +99,133 @@
                     <!-- Bronze -->
                     <div class="tier-card">
                         <div class="tier-card__icon tier-card__icon--bronze">B</div>
-                        <h3 class="tier-card__name">Bronze</h3>
+                        <h3 class="tier-card__name" data-i18n="membership.bronze_name">Bronze</h3>
                         <div class="tier-card__price">
                             <span class="price-amount">$0</span>
-                            <span class="price-period">/Bepul</span>
+                            <span class="price-period" data-i18n="membership.price_free">/Bepul</span>
                         </div>
                         <ul class="tier-card__features">
-                            <li><i data-lucide="check"></i> Asosiy narxlar</li>
-                            <li><i data-lucide="check"></i> Standart yetkazib berish</li>
-                            <li><i data-lucide="check"></i> Email qo'llab-quvvatlash</li>
-                            <li><i data-lucide="check"></i> Kafolatli mahsulotlar</li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk.base_price">Asosiy
+                                    narxlar</span></li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk.std_delivery">Standart
+                                    yetkazib berish</span></li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk_email">Email
+                                    qo'llab-quvvatlash</span></li>
+                            <li><i data-lucide="check"></i> <span data-i18n="home.features.guarantee">Kafolatli
+                                    mahsulotlar</span></li>
                         </ul>
-                        <button class="tier-card__btn tier-card__btn--outline">Hozirgi rejangiz</button>
+                        <button class="tier-card__btn tier-card__btn--outline"
+                            data-i18n="membership.plan_current">Hozirgi rejangiz</button>
                     </div>
 
                     <!-- Silver -->
                     <div class="tier-card tier-card--featured">
-                        <span class="featured-badge">Mashhur</span>
+                        <span class="featured-badge" data-i18n="membership.badge_popular">Mashhur</span>
                         <div class="tier-card__icon tier-card__icon--silver">S</div>
-                        <h3 class="tier-card__name">Silver</h3>
+                        <h3 class="tier-card__name" data-i18n="membership.silver_name">Silver</h3>
                         <div class="tier-card__price">
                             <span class="price-amount">$99</span>
-                            <span class="price-period">/yiliga</span>
+                            <span class="price-period" data-i18n="membership.price_year">/yiliga</span>
                         </div>
                         <ul class="tier-card__features">
-                            <li><i data-lucide="check"></i> 5% doimiy chegirma</li>
-                            <li><i data-lucide="check"></i> Bepul yetkazib berish</li>
-                            <li><i data-lucide="check"></i> Telefon qo'llab-quvvatlash</li>
-                            <li><i data-lucide="check"></i> Kengaytirilgan kafolat</li>
-                            <li><i data-lucide="check"></i> Maxsus takliflar</li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk.5_discount">5% doimiy
+                                    chegirma</span></li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk.free_delivery">Bepul
+                                    yetkazib berish</span></li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk_phone">Telefon
+                                    qo'llab-quvvatlash</span></li>
+                            <li><i data-lucide="check"></i> <span
+                                    data-i18n="membership.perk_warranty_extended">Kengaytirilgan kafolat</span></li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk_special">Maxsus
+                                    takliflar</span></li>
                         </ul>
-                        <button class="tier-card__btn" onclick="joinMembership('Silver')">A'zo bo'lish</button>
+                        <button class="tier-card__btn" onclick="joinMembership('Silver')"
+                            data-i18n="membership.plan_join">A'zo bo'lish</button>
                     </div>
 
                     <!-- Gold -->
                     <div class="tier-card">
                         <div class="tier-card__icon tier-card__icon--gold">G</div>
-                        <h3 class="tier-card__name">Gold</h3>
+                        <h3 class="tier-card__name" data-i18n="membership.gold_name">Gold</h3>
                         <div class="tier-card__price">
                             <span class="price-amount">$199</span>
-                            <span class="price-period">/yiliga</span>
+                            <span class="price-period" data-i18n="membership.price_year">/yiliga</span>
                         </div>
                         <ul class="tier-card__features">
-                            <li><i data-lucide="check"></i> 10% doimiy chegirma</li>
-                            <li><i data-lucide="check"></i> Tezkor yetkazib berish</li>
-                            <li><i data-lucide="check"></i> 24/7 qo'llab-quvvatlash</li>
-                            <li><i data-lucide="check"></i> 3 yilgacha kafolat</li>
-                            <li><i data-lucide="check"></i> VIP takliflar</li>
-                            <li><i data-lucide="check"></i> Bepul o'rnatish</li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk.10_discount">10% doimiy
+                                    chegirma</span></li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk.fast_delivery">Tezkor
+                                    yetkazib berish</span></li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk.247_support">24/7
+                                    qo'llab-quvvatlash</span></li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk_warranty_3y">3 yilgacha
+                                    kafolat</span></li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk_vip">VIP takliflar</span>
+                            </li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk_install">Bepul
+                                    o'rnatish</span></li>
                         </ul>
-                        <button class="tier-card__btn tier-card__btn--outline" onclick="joinMembership('Gold')">A'zo
+                        <button class="tier-card__btn tier-card__btn--outline" onclick="joinMembership('Gold')"
+                            data-i18n="membership.plan_join">A'zo
                             bo'lish</button>
                     </div>
 
                     <!-- Business -->
                     <div class="tier-card">
                         <div class="tier-card__icon tier-card__icon--business">B</div>
-                        <h3 class="tier-card__name">Business</h3>
+                        <h3 class="tier-card__name" data-i18n="membership.business_name">Business</h3>
                         <div class="tier-card__price">
                             <span class="price-amount">$499</span>
-                            <span class="price-period">/yiliga</span>
+                            <span class="price-period" data-i18n="membership.price_year">/yiliga</span>
                         </div>
                         <ul class="tier-card__features">
-                            <li><i data-lucide="check"></i> 15% doimiy chegirma</li>
-                            <li><i data-lucide="check"></i> Shaxsiy menejer</li>
-                            <li><i data-lucide="check"></i> To'plam xaridlarda chegirma</li>
-                            <li><i data-lucide="check"></i> 5 yilgacha kafolat</li>
-                            <li><i data-lucide="check"></i> Maxsus B2B takliflar</li>
-                            <li><i data-lucide="check"></i> Bepul o'rnatish va xizmat</li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk.15_discount">15% doimiy
+                                    chegirma</span></li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk.manager">Shaxsiy
+                                    menejer</span></li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk_bulk">To'plam xaridlarda
+                                    chegirma</span></li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk.5y_warranty">5 yilgacha
+                                    kafolat</span></li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk_b2b">Maxsus B2B
+                                    takliflar</span></li>
+                            <li><i data-lucide="check"></i> <span data-i18n="membership.perk_service">Bepul o'rnatish va
+                                    xizmat</span></li>
                         </ul>
-                        <button class="tier-card__btn tier-card__btn--outline" onclick="joinMembership('Business')">A'zo
+                        <button class="tier-card__btn tier-card__btn--outline" onclick="joinMembership('Business')"
+                            data-i18n="membership.plan_join">A'zo
                             bo'lish</button>
                     </div>
                 </div>
                 <div class="membership__perks">
-                    <h2 class="perks__title">A'zolik imtiyozlari</h2>
+                    <h2 class="perks__title" data-i18n="membership.full_perks_title">A'zolik imtiyozlari</h2>
                     <div class="perks__grid">
                         <div class="perk-item">
                             <div class="perk-icon-box">
                                 <i data-lucide="percent"></i>
                             </div>
-                            <h3 class="perk-name">Chegirmalar</h3>
-                            <p class="perk-text">Doimiy chegirmalar va maxsus takliflardan foydalaning</p>
+                            <h3 class="perk-name" data-i18n="membership.full_perk_discounts_name">Chegirmalar</h3>
+                            <p class="perk-text" data-i18n="membership.full_perk_discounts_text">Doimiy chegirmalar va
+                                maxsus takliflardan foydalaning</p>
                         </div>
 
                         <div class="perk-item">
                             <div class="perk-icon-box">
                                 <i data-lucide="truck"></i>
                             </div>
-                            <h3 class="perk-name">Bepul yetkazib berish</h3>
-                            <p class="perk-text">Barcha xaridlaringizni bepul yetkazib beramiz</p>
+                            <h3 class="perk-name" data-i18n="membership.full_perk_delivery_name">Bepul yetkazib berish
+                            </h3>
+                            <p class="perk-text" data-i18n="membership.full_perk_delivery_text">Barcha xaridlaringizni
+                                bepul yetkazib beramiz</p>
                         </div>
 
                         <div class="perk-item">
                             <div class="perk-icon-box">
                                 <i data-lucide="gift"></i>
                             </div>
-                            <h3 class="perk-name">Maxsus takliflar</h3>
-                            <p class="perk-text">Faqat a'zolar uchun maxsus takliflar va promokodlar</p>
+                            <h3 class="perk-name" data-i18n="membership.full_perk_offers_name">Maxsus takliflar</h3>
+                            <p class="perk-text" data-i18n="membership.full_perk_offers_text">Faqat a'zolar uchun maxsus
+                                takliflar va promokodlar</p>
                         </div>
                     </div>
                 </div>
@@ -203,10 +242,10 @@
                         <div class="footer__logo-icon">TH</div>
                         <div class="footer__logo-text">
                             <h3>Tech House</h3>
-                            <span>Smart Living Solutions</span>
+                            <span data-i18n="header.subtitle">Smart Living Solutions</span>
                         </div>
                     </div>
-                    <p class="footer__about">
+                    <p class="footer__about" data-i18n="footer.about">
                         Zamonaviy uy jihozlari va smart home texnologiyalari bo'yicha yetakchi kompaniya.
                     </p>
                     <div class="footer__socials">
@@ -218,28 +257,27 @@
                 </div>
 
                 <div class="footer__col">
-                    <h4 class="footer__title">Tezkor havolalar</h4>
+                    <h4 class="footer__title" data-i18n="footer.col1_title">Tezkor havolalar</h4>
                     <ul class="footer__links">
-                        <li><a href="categories.html">Kategoriyalar</a></li>
-                        <li><a href="#">Solishtirish</a></li>
-                        <li><a href="membership.html">A'zolik dasturi</a></li>
-                        <li><a href="#">Yordam markazi</a></li>
+                        <li><a href="categories.html" data-i18n="nav.categories">Kategoriyalar</a></li>
+                        <li><a href="membership.html" data-i18n="membership.title">A'zolik dasturi</a></li>
+                        <li><a href="help.html" data-i18n="footer.link_center">Yordam markazi</a></li>
                     </ul>
                 </div>
 
                 <div class="footer__col">
-                    <h4 class="footer__title">Mijozlarga xizmat</h4>
+                    <h4 class="footer__title" data-i18n="footer.col2_title">Mijozlarga xizmat</h4>
                     <ul class="footer__links">
-                        <li><a href="#">Akkaunt</a></li>
-                        <li><a href="#">Savatcha</a></li>
-                        <li><a href="#">Yetkazib berish</a></li>
-                        <li><a href="#">Qaytarish siyosati</a></li>
-                        <li><a href="#">Maxfiylik siyosati</a></li>
+                        <li><a href="#" data-i18n="footer.link_account">Akkaunt</a></li>
+                        <li><a href="#" data-i18n="nav.cart">Savatcha</a></li>
+                        <li><a href="#" data-i18n="footer.link_delivery">Yetkazib berish</a></li>
+                        <li><a href="#" data-i18n="footer.link_refunds">Qaytarish siyosati</a></li>
+                        <li><a href="#" data-i18n="footer.link_privacy">Maxfiylik siyosati</a></li>
                     </ul>
                 </div>
 
                 <div class="footer__col">
-                    <h4 class="footer__title">Aloqa</h4>
+                    <h4 class="footer__title" data-i18n="footer.col3_title">Aloqa</h4>
                     <ul class="footer__contact">
                         <li>
                             <i data-lucide="phone"></i>
@@ -254,7 +292,7 @@
                         </li>
                         <li>
                             <i data-lucide="map-pin"></i>
-                            <span>Toshkent sh., Amir Temur ko'chasi, 123</span>
+                            <span data-i18n="footer.address">Toshkent sh., Amir Temur ko'chasi, 123</span>
                         </li>
                     </ul>
                 </div>
@@ -263,43 +301,46 @@
             <div class="footer__features">
                 <div class="footer__feature-card">
                     <i data-lucide="shield-check"></i>
-                    <span>Kafolat</span>
+                    <span data-i18n="home.features.guarantee">Kafolat</span>
                 </div>
                 <div class="footer__feature-card">
                     <i data-lucide="check-circle-2"></i>
-                    <span>Sifat</span>
+                    <span data-i18n="footer.feature_quality">Sifat</span>
                 </div>
                 <div class="footer__feature-card">
                     <i data-lucide="credit-card"></i>
-                    <span>Xavfsiz to'lov</span>
+                    <span data-i18n="footer.feature_security">Xavfsiz to'lov</span>
                 </div>
                 <div class="footer__feature-card">
                     <i data-lucide="truck"></i>
-                    <span>Bepul yetkazib berish</span>
+                    <span data-i18n="home.features.delivery">Bepul yetkazib berish</span>
                 </div>
             </div>
 
             <div class="footer__bottom">
-                <p>&copy; 2026 Tech House. Barcha huquqlar himoyalangan.</p>
+                <p data-i18n="footer.copyright">&copy; 2026 Tech House. Barcha huquqlar himoyalangan.</p>
             </div>
         </div>
     </footer>
 
+    <script src="translations.js"></script>
     <script src="script.js"></script>
     <script>
         lucide.createIcons();
 
         function joinMembership(tier) {
             if (!currentUser) {
-                alert('Iltimos, avval tizimga kiring!');
-                window.location.href = 'auth.html';
+                showCustomAlert(t('cart.login_required'), () => {
+                    window.location.href = 'auth.html';
+                });
                 return;
             }
 
             currentUser.tier = tier;
             saveUser(currentUser);
-            alert(`Tabriklaymiz! Siz endi ${tier} darajasidagi a'zosiz.`);
-            window.location.href = 'membership.html';
+            showCustomAlert(t('membership.alert_join_success').replace('{tier}', tier), () => {
+                window.location.href = 'membership.html';
+            });
         }
     </script>
 </body>

@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body data-title-key="title.categories">
     <!-- Header -->
     <header class="header">
         <!-- Top Bar -->
@@ -19,8 +19,12 @@
                 <p class="header__top-text" data-i18n="header.free_delivery">Bepul yetkazib berish 500,000 so'mdan
                     yuqori xaridlar uchun!</p>
                 <div class="header__top-links">
-                    <a href="help.html" data-i18n="nav.help">Yordam</a>
-                    <a href="membership.html" data-i18n="nav.membership">A'zolik</a>
+                    <div class="lang-switcher">
+                        <button class="lang-btn" onclick="changeLanguage('uz')" data-lang="uz">UZ</button>
+                        <button class="lang-btn active" onclick="changeLanguage('en')" data-lang="en">EN</button>
+                    </div>
+                    <a href="help.html" data-i18n="nav.help">Help</a>
+                    <a href="membership.html" data-i18n="nav.membership">Membership</a>
                 </div>
             </div>
         </div>
@@ -45,10 +49,6 @@
                 </div>
 
                 <div class="header__user-actions">
-                    <div class="lang-switcher">
-                        <button class="lang-btn active" onclick="changeLanguage('uz')" data-lang="uz">UZ</button>
-                        <button class="lang-btn" onclick="changeLanguage('en')" data-lang="en">EN</button>
-                    </div>
                     <button class="user-action-btn"><i data-lucide="user"></i></button>
                     <a href="cart.html" class="user-action-btn">
                         <i data-lucide="shopping-cart"></i>
@@ -71,10 +71,15 @@
                     <li><a href="about.html" class="nav__link" data-i18n="nav.about">Biz haqimizda</a></li>
                     <li><a href="categories.html" class="nav__link active" data-i18n="nav.categories">Kategoriyalar</a>
                     </li>
-                    <li><a href="#" class="nav__link" data-i18n="nav.compare">Solishtirish</a></li>
                     <li><a href="membership.html" class="nav__link" data-i18n="nav.membership">A'zolik</a></li>
                     <li><a href="help.html" class="nav__link" data-i18n="nav.help">Yordam</a></li>
                 </ul>
+                <div class="nav__mobile-lang">
+                    <div class="lang-switcher">
+                        <button class="lang-btn" onclick="changeLanguage('uz')" data-lang="uz">UZ</button>
+                        <button class="lang-btn active" onclick="changeLanguage('en')" data-lang="en">EN</button>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
@@ -96,40 +101,40 @@
                                 <label class="checkbox-container">
                                     <input type="checkbox" value="Kitchen Appliances">
                                     <span class="checkmark"></span>
-                                    <span class="label-text"><i data-lucide="search" class="icon-xs"></i> Kitchen
-                                        Appliances</span>
+                                    <span class="label-text"><i data-lucide="search" class="icon-xs"></i> <span
+                                            data-i18n="category.kitchen">Kitchen Appliances</span></span>
                                 </label>
                             </li>
                             <li>
                                 <label class="checkbox-container">
                                     <input type="checkbox" value="Cleaning Appliances" checked>
                                     <span class="checkmark"></span>
-                                    <span class="label-text"><i data-lucide="sparkles" class="icon-xs"></i> Cleaning
-                                        Appliances</span>
+                                    <span class="label-text"><i data-lucide="sparkles" class="icon-xs"></i> <span
+                                            data-i18n="category.cleaning">Cleaning Appliances</span></span>
                                 </label>
                             </li>
                             <li>
                                 <label class="checkbox-container">
                                     <input type="checkbox" value="Heating & Cooling">
                                     <span class="checkmark"></span>
-                                    <span class="label-text"><i data-lucide="snowflake" class="icon-xs"></i> Heating &
-                                        Cooling</span>
+                                    <span class="label-text"><i data-lucide="snowflake" class="icon-xs"></i> <span
+                                            data-i18n="category.cooling">Heating & Cooling</span></span>
                                 </label>
                             </li>
                             <li>
                                 <label class="checkbox-container">
                                     <input type="checkbox" value="Personal Care">
                                     <span class="checkmark"></span>
-                                    <span class="label-text"><i data-lucide="user" class="icon-xs"></i> Personal
-                                        Care</span>
+                                    <span class="label-text"><i data-lucide="user" class="icon-xs"></i> <span
+                                            data-i18n="category.personal">Personal Care</span></span>
                                 </label>
                             </li>
                             <li>
                                 <label class="checkbox-container">
                                     <input type="checkbox" value="Smart Home">
                                     <span class="checkmark"></span>
-                                    <span class="label-text"><i data-lucide="home" class="icon-xs"></i> Smart
-                                        Home</span>
+                                    <span class="label-text"><i data-lucide="home" class="icon-xs"></i> <span
+                                            data-i18n="category.smart">Smart Home</span></span>
                                 </label>
                             </li>
                         </ul>
@@ -156,25 +161,28 @@
                 <div class="products-content">
                     <div class="products-page__header">
                         <div>
-                            <h2 class="section__title text-left">Barcha mahsulotlar</h2>
-                            <span class="products-count">8 mahsulot topildi</span>
+                            <h2 class="section__title text-left" data-i18n="categories.title_all">Barcha mahsulotlar
+                            </h2>
+                            <span class="products-count" data-i18n="filters.found">8 mahsulot topildi</span>
                         </div>
 
                         <div class="products__controls">
                             <div class="view-toggle" id="view-toggle">
-                                <button class="view-btn active" id="view-grid" title="Grid ko'rinishi">
+                                <button class="view-btn active" id="view-grid" title="Grid ko'rinishi"
+                                    data-i18n="categories.view_grid">
                                     <i data-lucide="grid"></i>
                                 </button>
-                                <button class="view-btn" id="view-list" title="Ro'yxat ko'rinishi">
+                                <button class="view-btn" id="view-list" title="Ro'yxat ko'rinishi"
+                                    data-i18n="categories.view_list">
                                     <i data-lucide="list"></i>
                                 </button>
                             </div>
 
                             <select class="sort-select" id="sort-select">
-                                <option value="popular">Mashhur</option>
-                                <option value="new">Yangi</option>
-                                <option value="price-asc">Arzonroq</option>
-                                <option value="price-desc">Qimmatroq</option>
+                                <option value="popular" data-i18n="categories.sort_popular">Mashhur</option>
+                                <option value="new" data-i18n="categories.sort_new">Yangi</option>
+                                <option value="price-asc" data-i18n="categories.sort_price_asc">Arzonroq</option>
+                                <option value="price-desc" data-i18n="categories.sort_price_desc">Qimmatroq</option>
                             </select>
                         </div>
                     </div>
@@ -288,10 +296,10 @@
                         <div class="footer__logo-icon">TH</div>
                         <div class="footer__logo-text">
                             <h3>Tech House</h3>
-                            <span>Smart Living Solutions</span>
+                            <span data-i18n="header.subtitle">Smart Living Solutions</span>
                         </div>
                     </div>
-                    <p class="footer__about">
+                    <p class="footer__about" data-i18n="footer.about">
                         Zamonaviy uy jihozlari va smart home texnologiyalari bo'yicha yetakchi kompaniya.
                     </p>
                     <div class="footer__socials">
@@ -303,28 +311,27 @@
                 </div>
 
                 <div class="footer__col">
-                    <h4 class="footer__title">Tezkor havolalar</h4>
+                    <h4 class="footer__title" data-i18n="footer.col1_title">Tezkor havolalar</h4>
                     <ul class="footer__links">
-                        <li><a href="categories.html">Kategoriyalar</a></li>
-                        <li><a href="#">Solishtirish</a></li>
-                        <li><a href="membership.html">A'zolik dasturi</a></li>
-                        <li><a href="#">Yordam markazi</a></li>
+                        <li><a href="categories.html" data-i18n="nav.categories">Kategoriyalar</a></li>
+                        <li><a href="membership.html" data-i18n="membership.title">A'zolik dasturi</a></li>
+                        <li><a href="help.html" data-i18n="footer.link_center">Yordam markazi</a></li>
                     </ul>
                 </div>
 
                 <div class="footer__col">
-                    <h4 class="footer__title">Mijozlarga xizmat</h4>
+                    <h4 class="footer__title" data-i18n="footer.col2_title">Mijozlarga xizmat</h4>
                     <ul class="footer__links">
-                        <li><a href="#">Akkaunt</a></li>
-                        <li><a href="#">Savatcha</a></li>
-                        <li><a href="#">Yetkazib berish</a></li>
-                        <li><a href="#">Qaytarish siyosati</a></li>
-                        <li><a href="#">Maxfiylik siyosati</a></li>
+                        <li><a href="#" data-i18n="footer.link_account">Akkaunt</a></li>
+                        <li><a href="#" data-i18n="nav.cart">Savatcha</a></li>
+                        <li><a href="#" data-i18n="footer.link_delivery">Yetkazib berish</a></li>
+                        <li><a href="#" data-i18n="footer.link_refunds">Qaytarish siyosati</a></li>
+                        <li><a href="#" data-i18n="footer.link_privacy">Maxfiylik siyosati</a></li>
                     </ul>
                 </div>
 
                 <div class="footer__col">
-                    <h4 class="footer__title">Aloqa</h4>
+                    <h4 class="footer__title" data-i18n="footer.col3_title">Aloqa</h4>
                     <ul class="footer__contact">
                         <li>
                             <i data-lucide="phone"></i>
@@ -339,7 +346,7 @@
                         </li>
                         <li>
                             <i data-lucide="map-pin"></i>
-                            <span>Toshkent sh., Amir Temur ko'chasi, 123</span>
+                            <span data-i18n="footer.address">Toshkent sh., Amir Temur ko'chasi, 123</span>
                         </li>
                     </ul>
                 </div>
@@ -348,24 +355,24 @@
             <div class="footer__features">
                 <div class="footer__feature-card">
                     <i data-lucide="shield-check"></i>
-                    <span>Kafolat</span>
+                    <span data-i18n="home.features.guarantee">Kafolat</span>
                 </div>
                 <div class="footer__feature-card">
                     <i data-lucide="check-circle-2"></i>
-                    <span>Sifat</span>
+                    <span data-i18n="footer.feature_quality">Sifat</span>
                 </div>
                 <div class="footer__feature-card">
                     <i data-lucide="credit-card"></i>
-                    <span>Xavfsiz to'lov</span>
+                    <span data-i18n="footer.feature_security">Xavfsiz to'lov</span>
                 </div>
                 <div class="footer__feature-card">
                     <i data-lucide="truck"></i>
-                    <span>Bepul yetkazib berish</span>
+                    <span data-i18n="home.features.delivery">Bepul yetkazib berish</span>
                 </div>
             </div>
 
             <div class="footer__bottom">
-                <p>&copy; 2026 Tech House. Barcha huquqlar himoyalangan.</p>
+                <p data-i18n="footer.copyright">&copy; 2026 Tech House. Barcha huquqlar himoyalangan.</p>
             </div>
         </div>
     </footer>

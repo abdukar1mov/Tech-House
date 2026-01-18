@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-title-key="title.product_detail">
     <!-- Header -->
     <header class="header">
         <!-- Top Bar -->
@@ -23,8 +23,12 @@
                 <p class="header__top-text" data-i18n="header.free_delivery">Bepul yetkazib berish 500,000 so'mdan
                     yuqori xaridlar uchun!</p>
                 <div class="header__top-links">
-                    <a href="help.html" data-i18n="nav.help">Yordam</a>
-                    <a href="membership.html" data-i18n="nav.membership">A'zolik</a>
+                    <div class="lang-switcher">
+                        <button class="lang-btn" onclick="changeLanguage('uz')" data-lang="uz">UZ</button>
+                        <button class="lang-btn active" onclick="changeLanguage('en')" data-lang="en">EN</button>
+                    </div>
+                    <a href="help.html" data-i18n="nav.help">Help</a>
+                    <a href="membership.html" data-i18n="nav.membership">Membership</a>
                 </div>
             </div>
         </div>
@@ -49,10 +53,6 @@
                 </div>
 
                 <div class="header__user-actions">
-                    <div class="lang-switcher">
-                        <button class="lang-btn active" onclick="changeLanguage('uz')" data-lang="uz">UZ</button>
-                        <button class="lang-btn" onclick="changeLanguage('en')" data-lang="en">EN</button>
-                    </div>
                     <button class="user-action-btn"><i data-lucide="user"></i></button>
                     <a href="cart.html" class="user-action-btn">
                         <i data-lucide="shopping-cart"></i>
@@ -74,10 +74,15 @@
                     <li><a href="index.html" class="nav__link" data-i18n="nav.home">Bosh sahifa</a></li>
                     <li><a href="about.html" class="nav__link" data-i18n="nav.about">Biz haqimizda</a></li>
                     <li><a href="categories.html" class="nav__link" data-i18n="nav.categories">Kategoriyalar</a></li>
-                    <li><a href="#" class="nav__link" data-i18n="nav.compare">Solishtirish</a></li>
                     <li><a href="membership.html" class="nav__link" data-i18n="nav.membership">A'zolik</a></li>
                     <li><a href="help.html" class="nav__link" data-i18n="nav.help">Yordam</a></li>
                 </ul>
+                <div class="nav__mobile-lang">
+                    <div class="lang-switcher">
+                        <button class="lang-btn" onclick="changeLanguage('uz')" data-lang="uz">UZ</button>
+                        <button class="lang-btn active" onclick="changeLanguage('en')" data-lang="en">EN</button>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
@@ -86,13 +91,13 @@
         <div class="container py-4">
             <!-- Back Button -->
             <a href="javascript:history.back()" class="back-link">
-                <i data-lucide="arrow-left"></i> Orqaga
+                <i data-lucide="arrow-left"></i> <span data-i18n="nav.back">Orqaga</span>
             </a>
 
             <!-- Product Detail Grid -->
             <div id="product-detail-container">
                 <!-- Content will be injected by script.js -->
-                <div class="loading">Yuklanmoqda...</div>
+                <div class="loading" data-i18n="common.loading">Yuklanmoqda...</div>
             </div>
 
             <!-- Product Tabs at the bottom -->
@@ -109,10 +114,10 @@
                         <div class="footer__logo-icon">TH</div>
                         <div class="footer__logo-text">
                             <h3>Tech House</h3>
-                            <span>Smart Living Solutions</span>
+                            <span class="logo-subtitle" data-i18n="header.subtitle">Smart Living Solutions</span>
                         </div>
                     </div>
-                    <p class="footer__about">
+                    <p class="footer__about" data-i18n="footer.about">
                         Zamonaviy uy jihozlari va smart home texnologiyalari bo'yicha yetakchi kompaniya.
                     </p>
                     <div class="footer__socials">
@@ -125,30 +130,29 @@
 
                 <!-- Quick Links -->
                 <div class="footer__col">
-                    <h4 class="footer__title">Tezkor havolalar</h4>
+                    <h4 class="footer__title" data-i18n="footer.col1_title">Tezkor havolalar</h4>
                     <ul class="footer__links">
-                        <li><a href="categories.html">Kategoriyalar</a></li>
-                        <li><a href="#">Solishtirish</a></li>
-                        <li><a href="membership.html">A'zolik dasturi</a></li>
-                        <li><a href="#">Yordam markazi</a></li>
+                        <li><a href="categories.html" data-i18n="nav.categories">Kategoriyalar</a></li>
+                        <li><a href="membership.html" data-i18n="membership.title">A'zolik dasturi</a></li>
+                        <li><a href="help.html" data-i18n="footer.link_center">Yordam markazi</a></li>
                     </ul>
                 </div>
 
                 <!-- Customer Service -->
                 <div class="footer__col">
-                    <h4 class="footer__title">Mijozlarga xizmat</h4>
+                    <h4 class="footer__title" data-i18n="footer.col2_title">Mijozlarga xizmat</h4>
                     <ul class="footer__links">
-                        <li><a href="#">Akkaunt</a></li>
-                        <li><a href="#">Savatcha</a></li>
-                        <li><a href="#">Yetkazib berish</a></li>
-                        <li><a href="#">Qaytarish siyosati</a></li>
-                        <li><a href="#">Maxfiylik siyosati</a></li>
+                        <li><a href="#" data-i18n="footer.link_account">Akkaunt</a></li>
+                        <li><a href="#" data-i18n="nav.cart">Savatcha</a></li>
+                        <li><a href="#" data-i18n="footer.link_delivery">Yetkazib berish</a></li>
+                        <li><a href="#" data-i18n="footer.link_refunds">Qaytarish siyosati</a></li>
+                        <li><a href="#" data-i18n="footer.link_privacy">Maxfiylik siyosati</a></li>
                     </ul>
                 </div>
 
                 <!-- Contact -->
                 <div class="footer__col">
-                    <h4 class="footer__title">Aloqa</h4>
+                    <h4 class="footer__title" data-i18n="footer.col3_title">Aloqa</h4>
                     <ul class="footer__contact">
                         <li>
                             <i data-lucide="phone"></i>
@@ -163,7 +167,7 @@
                         </li>
                         <li>
                             <i data-lucide="map-pin"></i>
-                            <span>Toshkent sh., Amir Temur ko'chasi, 123</span>
+                            <span data-i18n="footer.address">Toshkent sh., Amir Temur ko'chasi, 123</span>
                         </li>
                     </ul>
                 </div>
@@ -173,24 +177,24 @@
             <div class="footer__features">
                 <div class="footer__feature-card">
                     <i data-lucide="shield-check"></i>
-                    <span>Kafolat</span>
+                    <span data-i18n="home.features.guarantee">Kafolat</span>
                 </div>
                 <div class="footer__feature-card">
                     <i data-lucide="check-circle-2"></i>
-                    <span>Sifat</span>
+                    <span data-i18n="footer.feature_quality">Sifat</span>
                 </div>
                 <div class="footer__feature-card">
                     <i data-lucide="credit-card"></i>
-                    <span>Xavfsiz to'lov</span>
+                    <span data-i18n="footer.feature_security">Xavfsiz to'lov</span>
                 </div>
                 <div class="footer__feature-card">
                     <i data-lucide="truck"></i>
-                    <span>Bepul yetkazib berish</span>
+                    <span data-i18n="home.features.delivery">Bepul yetkazib berish</span>
                 </div>
             </div>
 
             <div class="footer__bottom">
-                <p>&copy; 2026 Tech House. Barcha huquqlar himoyalangan.</p>
+                <p data-i18n="footer.copyright">&copy; 2026 Tech House. Barcha huquqlar himoyalangan.</p>
             </div>
         </div>
     </footer>

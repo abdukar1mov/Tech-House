@@ -164,10 +164,10 @@ var products = [
 
 //================ AUTH LOGIC ================
 const MEMBERSHIP_TIERS = {
-    'Bronze': { discount: 0, perks: ['Asosiy narxlar', 'Standart yetkazib berish'] },
-    'Silver': { discount: 0.05, perks: ['5% chegirma', 'Bepul yetkazib berish'] },
-    'Gold': { discount: 0.10, perks: ['10% chegirma', 'Tezkor yetkazib berish', '24/7 qo\'llab-quvvatlash'] },
-    'Business': { discount: 0.15, perks: ['15% chegirma', 'Shaxsiy menejer', '5 yilgacha kafolat'] }
+    'Bronze': { discount: 0, perks: ['membership.perk.base_price', 'membership.perk.std_delivery'] },
+    'Silver': { discount: 0.05, perks: ['membership.perk.5_discount', 'membership.perk.free_delivery'] },
+    'Gold': { discount: 0.10, perks: ['membership.perk.10_discount', 'membership.perk.fast_delivery', 'membership.perk.247_support'] },
+    'Business': { discount: 0.15, perks: ['membership.perk.15_discount', 'membership.perk.manager', 'membership.perk.5y_warranty'] }
 };
 
 function getTieredPrice(basePrice) {
@@ -246,7 +246,7 @@ function updateAuthUI() {
                 <div class="user-profile">
                     <div class="user-info">
                         <span class="user-name">${currentUser.firstName}</span>
-                        <button onclick="handleLogout()" class="logout-btn">Chiqish</button>
+                        <button onclick="handleLogout()" class="logout-btn">${t('auth.logout')}</button>
                     </div>
                 </div>
                 <a href="cart.html" class="user-action-btn">
@@ -289,11 +289,11 @@ function updateAuthUI() {
     if (checkoutBtn) {
         checkoutBtn.onclick = function () {
             if (!currentUser) {
-                showCustomAlert('Iltimos, avval tizimga kiring!', () => {
+                showCustomAlert(t('cart.login_required'), () => {
                     window.location.href = 'auth.html';
                 });
             } else {
-                showCustomAlert('Buyurtmangiz qabul qilindi! Tez orada operatorlarimiz bog\'lanishadi.', () => {
+                showCustomAlert(t('cart.order_success'), () => {
                     cart = [];
                     saveCart();
                     window.location.href = 'index.html';
@@ -414,7 +414,7 @@ function drawProducts(filteredProducts, containerId) {
     var allHtml = "";
 
     if (listToDraw.length === 0) {
-        targetContainer.innerHTML = '<div class="no-results">Mahsulot topilmadi</div>';
+        targetContainer.innerHTML = `<div class="no-results">${t('filters.found').replace('products found', '').replace('mahsulot topildi', '')} Topilmadi</div>`; // Simplified fallthrough
         return;
     }
 
@@ -430,7 +430,7 @@ function drawProducts(filteredProducts, containerId) {
         // Cart button or quantity controls
         let actionButtons = `
             <button class="btn btn--primary w-100 mt-auto" onclick="addToCart(${p.id})">
-                <i data-lucide="shopping-cart" class="icon-sm"></i> Savatga qo'shish
+                <i data-lucide="shopping-cart" class="icon-sm"></i> ${t('product.add_to_cart')}
             </button>
         `;
 
@@ -516,6 +516,36 @@ function applyFilters() {
     drawProducts(filtered);
 }
 
+function showSearchResults(query, resultsContainer) {
+    if (!resultsContainer) return;
+
+    if (query.length === 0) {
+        resultsContainer.classList.remove('active');
+        return;
+    }
+
+    const matched = products.filter(p => p.name.toLowerCase().includes(query)).slice(0, 5);
+
+    if (matched.length === 0) {
+        resultsContainer.innerHTML = `<div class="search-no-results">"${query}" ${t('search.no_results')}</div>`;
+    } else {
+        resultsContainer.innerHTML = matched.map(p => {
+            const priceInfo = getTieredPrice(p.price);
+            return `
+                <div class="search-item" onclick="window.location.href='product-detail.html?id=${p.id}'">
+                    <img src="${p.image}" alt="${p.name}" class="search-item__img">
+                    <div class="search-item__info">
+                        <span class="search-item__name">${p.name}</span>
+                        <span class="search-item__price">$${priceInfo.price}</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    resultsContainer.classList.add('active');
+}
+
 function sortProducts(list) {
     const sorted = [...list];
     switch (filters.sort) {
@@ -563,10 +593,40 @@ function initFilterListeners() {
     // Search input
     var searchInputs = document.querySelectorAll('input[placeholder="Mahsulotlarni qidiring..."]');
     searchInputs.forEach(function (input) {
+        const searchContainer = input.closest('.header__search');
+        if (searchContainer && !searchContainer.querySelector('.search-results')) {
+            const resultsDiv = document.createElement('div');
+            resultsDiv.className = 'search-results';
+            searchContainer.appendChild(resultsDiv);
+        }
+
         input.addEventListener("input", function (e) {
-            filters.search = e.target.value;
-            applyFilters();
+            const query = e.target.value.trim().toLowerCase();
+            filters.search = query;
+
+            if (document.getElementById("categories-products-grid")) {
+                applyFilters();
+            }
+
+            if (searchContainer) {
+                showSearchResults(query, searchContainer.querySelector('.search-results'));
+            }
         });
+
+        // Show results when focusing back if query exists
+        input.addEventListener("focus", function (e) {
+            const query = e.target.value.trim().toLowerCase();
+            if (query.length > 0 && searchContainer) {
+                showSearchResults(query, searchContainer.querySelector('.search-results'));
+            }
+        });
+    });
+
+    // Close results on outside click
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.header__search')) {
+            document.querySelectorAll('.search-results').forEach(res => res.classList.remove('active'));
+        }
     });
 
     // Category checkboxes
@@ -672,13 +732,13 @@ function loadProductDetail() {
     var productId = parseInt(urlParams.get('id'));
 
     if (!productId) {
-        container.innerHTML = '<div class="error">Mahsulot topilmadi</div>';
+        container.innerHTML = `<div class="error">${t('filters.found').replace('products found', '').replace('mahsulot topildi', '')} Topilmadi</div>`;
         return;
     }
 
     var product = products.find(p => p.id === productId);
     if (!product) {
-        container.innerHTML = '<div class="error">Mahsulot topilmadi</div>';
+        container.innerHTML = `<div class="error">${t('filters.found').replace('products found', '').replace('mahsulot topildi', '')} Topilmadi</div>`;
         return;
     }
 
@@ -712,7 +772,7 @@ function loadProductDetail() {
             </div>
             
             <div class="product-detail__info-col">
-                <span class="product-detail__cat">${product.categorySlug || 'tech'}</span>
+                <span class="product-detail__cat">${t('category.' + product.categorySlug) || product.categorySlug || 'tech'}</span>
                 <h1 class="product-detail__title">${product.name}</h1>
                 
                 <div class="product-detail__rating">
@@ -722,7 +782,7 @@ function loadProductDetail() {
                     <i data-lucide="star"></i>
                     <i data-lucide="star" style="fill: none; color: #cbd5e1;"></i>
                     <span class="rating-val">${product.rating}</span>
-                    <span class="rating-count">(${product.reviews} ta sharh)</span>
+                    <span class="rating-count">(${product.reviews} ${t('product.reviews')})</span>
                 </div>
                 
                 <div class="product-detail__price-box">
@@ -732,7 +792,7 @@ function loadProductDetail() {
                 return `
                                 <span class="product-detail__current-price">$${priceInfo.price}</span>
                                 <span class="product-detail__old-price">$${product.price}</span>
-                                <span class="tier-label">(${priceInfo.tierName} tarif chegirmasi)</span>
+                                <span class="tier-label">(${priceInfo.tierName} ${t('membership.discount_label')})</span>
                             `;
             } else {
                 return `
@@ -747,7 +807,7 @@ function loadProductDetail() {
                 
                 <div class="product-detail__stock">
                     <span class="dot"></span>
-                    ${product.stock || 'Mavjud'}
+                    ${product.stock === 'Mavjud' || !product.stock ? t('product.stock') : product.stock}
                 </div>
                 
                 <div class="product-detail__actions">
@@ -768,16 +828,15 @@ function loadProductDetail() {
             } else {
                 return `
                                 <button class="btn btn--primary" onclick="addToCart(${product.id})">
-                                    <i data-lucide="shopping-cart"></i> Savatga qo'shish
+                                    <i data-lucide="shopping-cart"></i> ${t('product.add_to_cart')}
                                 </button>
-                                <button class="btn btn--outline">Solishtirish</button>
                             `;
             }
         })()}
                 </div>
                 
                 <div class="product-detail__features">
-                    <h4>Asosiy xususiyatlar:</h4>
+                    <h4>${t('product.specs_title')}</h4>
                     <div class="features-list">
                         ${featuresHtml}
                     </div>
@@ -878,7 +937,7 @@ function switchTab(event, tabId) {
 }
 
 // 9. Localization Logic
-let currentLang = localStorage.getItem('lang') || 'uz';
+let currentLang = localStorage.getItem('lang') || 'en';
 
 function changeLanguage(lang) {
     currentLang = lang;
@@ -907,16 +966,18 @@ function updateContent() {
     // Static content
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
-        if (element.tagName === 'INPUT' && element.getAttribute('placeholder')) {
-            // skip for now or handle specific placeholders
+        if (element.tagName === 'INPUT') {
+            element.placeholder = t(key);
         } else {
             element.textContent = t(key);
         }
-
-        if (key === 'header.search_placeholder') {
-            element.placeholder = t(key);
-        }
     });
+
+    // Update document title
+    const pageKey = document.body.dataset.titleKey;
+    if (pageKey) {
+        document.title = t(pageKey);
+    }
 
     updateActiveLangButton();
     updateCartUI(); // Refresh cart UI which might have text

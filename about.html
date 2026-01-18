@@ -14,16 +14,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-title-key="title.about">
     <!-- Header -->
     <header class="header">
         <!-- Top Bar -->
         <div class="header__top">
             <div class="container header__top-container">
-                <p class="header__top-text">Bepul yetkazib berish 500,000 so'mdan yuqori xaridlar uchun!</p>
+                <p class="header__top-text" data-i18n="header.free_delivery">Bepul yetkazib berish 500,000 so'mdan
+                    yuqori xaridlar uchun!</p>
                 <div class="header__top-links">
-                    <a href="help.html">Yordam</a>
-                    <a href="membership.html">A'zolik</a>
+                    <div class="lang-switcher">
+                        <button class="lang-btn" onclick="changeLanguage('uz')" data-lang="uz">UZ</button>
+                        <button class="lang-btn active" onclick="changeLanguage('en')" data-lang="en">EN</button>
+                    </div>
+                    <a href="help.html" data-i18n="nav.help">Help</a>
+                    <a href="membership.html" data-i18n="nav.membership">Membership</a>
                 </div>
             </div>
         </div>
@@ -35,14 +40,15 @@
                     <div class="logo-box">TH</div>
                     <div class="logo-text">
                         <span class="logo-title">Tech House</span>
-                        <span class="logo-subtitle">Smart Living Solutions</span>
+                        <span class="logo-subtitle" data-i18n="header.subtitle">Smart Living Solutions</span>
                     </div>
                 </a>
 
                 <div class="header__search">
                     <div class="search-box">
                         <i data-lucide="search"></i>
-                        <input type="text" placeholder="Mahsulotlarni qidiring...">
+                        <input type="text" data-i18n-placeholder="header.search_placeholder"
+                            placeholder="Mahsulotlarni qidiring...">
                     </div>
                 </div>
 
@@ -65,13 +71,18 @@
         <nav class="nav">
             <div class="container nav__container">
                 <ul class="nav__list">
-                    <li><a href="index.html" class="nav__link">Bosh sahifa</a></li>
-                    <li><a href="about.html" class="nav__link active">Biz haqimizda</a></li>
-                    <li><a href="categories.html" class="nav__link">Kategoriyalar</a></li>
-                    <li><a href="#" class="nav__link">Solishtirish</a></li>
-                    <li><a href="membership.html" class="nav__link">A'zolik</a></li>
-                    <li><a href="help.html" class="nav__link">Yordam</a></li>
+                    <li><a href="index.html" class="nav__link" data-i18n="nav.home">Bosh sahifa</a></li>
+                    <li><a href="about.html" class="nav__link active" data-i18n="nav.about">Biz haqimizda</a></li>
+                    <li><a href="categories.html" class="nav__link" data-i18n="nav.categories">Kategoriyalar</a></li>
+                    <li><a href="membership.html" class="nav__link" data-i18n="nav.membership">A'zolik</a></li>
+                    <li><a href="help.html" class="nav__link" data-i18n="nav.help">Yordam</a></li>
                 </ul>
+                <div class="nav__mobile-lang">
+                    <div class="lang-switcher">
+                        <button class="lang-btn" onclick="changeLanguage('uz')" data-lang="uz">UZ</button>
+                        <button class="lang-btn active" onclick="changeLanguage('en')" data-lang="en">EN</button>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
@@ -82,8 +93,9 @@
             <div class="container">
                 <div class="about-hero__grid">
                     <div class="about-hero__content">
-                        <h1 class="about-hero__title">Smart texnologiyalar olamiga xush kelibsiz!</h1>
-                        <p class="about-hero__text">
+                        <h1 class="about-hero__title" data-i18n="about.hero_title">Smart texnologiyalar olamiga xush
+                            kelibsiz!</h1>
+                        <p class="about-hero__text" data-i18n="about.hero_text">
                             Tech House — bu nafaqat do'kon, balki sizning uyingizni yanada aqlli va qulay qilishga
                             yordam beradigan professionallar jamoasidir. Biz 2018-yildan buyon O'zbekiston bo'ylab eng
                             zamonaviy uy jihozlarini yetkazib bermoqdamiz.
@@ -91,15 +103,15 @@
                         <div class="about-stats">
                             <div class="stat-item">
                                 <h3>5+</h3>
-                                <span>Filial</span>
+                                <span data-i18n="about.stats_branches">Filial</span>
                             </div>
                             <div class="stat-item">
                                 <h3>50k+</h3>
-                                <span>Mijozlar</span>
+                                <span data-i18n="about.stats_customers">Mijozlar</span>
                             </div>
                             <div class="stat-item">
                                 <h3>24/7</h3>
-                                <span>Yordam</span>
+                                <span data-i18n="about.stats_support">Yordam</span>
                             </div>
                         </div>
                     </div>
@@ -114,8 +126,9 @@
         <section class="branches section bg-light">
             <div class="container">
                 <div class="section__header">
-                    <h2 class="section__title">Hududiy filiallarimiz</h2>
-                    <p class="section__subtitle">O'zbekiston bo'ylab 5 ta asosiy nuqtada sizga xizmat ko'rsatamiz</p>
+                    <h2 class="section__title" data-i18n="about.branches_title">Hududiy filiallarimiz</h2>
+                    <p class="section__subtitle" data-i18n="about.branches_subtitle">O'zbekiston bo'ylab 5 ta asosiy
+                        nuqtada sizga xizmat ko'rsatamiz</p>
                 </div>
 
                 <div class="branches__list">
@@ -126,13 +139,13 @@
                             <img src="assets/images/warehouse.png" alt="Bosh ofis">
                         </div>
                         <div class="branch-item__info">
-                            <span class="branch-tag">Toshkent</span>
-                            <h3>Bosh ofis (Amir Temur)</h3>
-                            <p>Bizning markaziy ofisimizda eng so'nggi smart home tizimlarini jonli ravishda test qilib
-                                ko'rish imkoniyati mavjud. Professional maslahatchilarimiz sizga to'g'ri tanlovda yordam
-                                berishadi.</p>
+                            <span class="branch-tag" data-i18n="footer.address">Toshkent</span>
+                            <h3 data-i18n="about.branch1_name">Bosh ofis (Amir Temur)</h3>
+                            <p data-i18n="about.branch1_desc">Markaziy ofisimizda smart home tizimlarini jonli ravishda
+                                test qilib ko'rish imkoniyati mavjud.</p>
                             <div class="branch-meta">
-                                <span><i data-lucide="map-pin"></i> Amir Temur ko'chasi, 123</span>
+                                <span><i data-lucide="map-pin"></i> <span data-i18n="footer.address">Amir Temur
+                                        ko'chasi, 123</span></span>
                                 <span><i data-lucide="phone"></i> +998 71 123 45 67</span>
                             </div>
                         </div>
@@ -145,10 +158,10 @@
                             <img src="assets/images/warehouse.png" alt="Chilonzor">
                         </div>
                         <div class="branch-item__info">
-                            <span class="branch-tag">Toshkent</span>
-                            <h3>Chilonzor TechHub</h3>
-                            <p>Chilonzor markazidagi ushbu filialimiz asosan maishiy texnika va oshxona jihozlari
-                                bo'yicha ixtisoslashgan. Keng assortiment va qulay joylashuv sizni kutmoqda.</p>
+                            <span class="branch-tag" data-i18n="footer.address">Toshkent</span>
+                            <h3 data-i18n="about.branch2_name">Chilonzor TechHub</h3>
+                            <p data-i18n="about.branch2_desc">Maishiy texnika va oshxona jihozlari bo'yicha
+                                ixtisoslashgan filialimiz.</p>
                             <div class="branch-meta">
                                 <span><i data-lucide="map-pin"></i> Bunyodkor ko'chasi, 45</span>
                                 <span><i data-lucide="phone"></i> +998 71 223 45 67</span>
@@ -164,9 +177,9 @@
                         </div>
                         <div class="branch-item__info">
                             <span class="branch-tag">Samarqand</span>
-                            <h3>Samarqand Grand Store</h3>
-                            <p>Qadimiy va navqiron Samarqand shahrining qoq markazida joylashgan filialimizda sizga eng
-                                zamonaviy xalqaro brend mahsulotlarini taklif etamiz.</p>
+                            <h3 data-i18n="about.branch3_name">Samarqand Grand Store</h3>
+                            <p data-i18n="about.branch3_desc">Samarqand shahrining qoq markazida joylashgan zamonaviy
+                                filialimiz.</p>
                             <div class="branch-meta">
                                 <span><i data-lucide="map-pin"></i> Registon ko'chasi, 12</span>
                                 <span><i data-lucide="phone"></i> +998 66 123 45 67</span>
@@ -182,9 +195,9 @@
                         </div>
                         <div class="branch-item__info">
                             <span class="branch-tag">Farg'ona</span>
-                            <h3>Farg'ona Valley Center</h3>
-                            <p>Vodiy ahlini zamonaviy texnologiyalar bilan tanishtirishda ushbu filialimizning o'rni
-                                beqiyos. Yuqori sifatli xizmat va kafolatlangan mahsulotlar.</p>
+                            <h3 data-i18n="about.branch4_name">Farg'ona Valley Center</h3>
+                            <p data-i18n="about.branch4_desc">Vodiy ahlini zamonaviy texnologiyalar bilan tanishtirishda
+                                yetakchi markaz.</p>
                             <div class="branch-meta">
                                 <span><i data-lucide="map-pin"></i> Mustaqillik ko'chasi, 88</span>
                                 <span><i data-lucide="phone"></i> +998 73 123 45 67</span>
@@ -200,9 +213,9 @@
                         </div>
                         <div class="branch-item__info">
                             <span class="branch-tag">Buxoro</span>
-                            <h3>Buxoro Silk Tech</h3>
-                            <p>Buxoro shahridagi zamonaviy do'konimizda barcha turdagi smart uskunalar va ularni
-                                o'rnatish bo'yicha bepul master-klasslar o'tkaziladi.</p>
+                            <h3 data-i18n="about.branch5_name">Buxoro Silk Tech</h3>
+                            <p data-i18n="about.branch5_desc">Smart uskunalar va bepul master-klasslar o'tkaziladigan
+                                do'konimiz.</p>
                             <div class="branch-meta">
                                 <span><i data-lucide="map-pin"></i> Bahouddin Naqshband ko'chasi, 5</span>
                                 <span><i data-lucide="phone"></i> +998 65 123 45 67</span>
@@ -217,16 +230,16 @@
         <section class="section bg-light">
             <div class="container">
                 <div class="faq">
-                    <h2 class="faq__title">Tez-tez so'raladigan savollar</h2>
+                    <h2 class="faq__title" data-i18n="home.faq.title">Tez-tez so'raladigan savollar</h2>
                     <div class="faq__list">
                         <!-- Item 1 -->
                         <div class="faq__item active">
                             <button class="faq__header">
-                                <span>Yetkazib berish qancha vaqt oladi?</span>
+                                <span data-i18n="home.faq.q1">Yetkazib berish qancha vaqt oladi?</span>
                                 <i data-lucide="chevron-down" class="faq__icon"></i>
                             </button>
                             <div class="faq__content">
-                                <p class="faq__text">
+                                <p class="faq__text" data-i18n="home.faq.a1">
                                     Toshkent bo'ylab 24 soat ichida, viloyatlarga esa 2-3 kun ichida yetkazib beramiz.
                                     Tezkor yetkazib berish xizmati ham mavjud.
                                 </p>
@@ -235,11 +248,11 @@
                         <!-- Item 2 -->
                         <div class="faq__item">
                             <button class="faq__header">
-                                <span>Kafolat muddati qancha?</span>
+                                <span data-i18n="home.faq.q2">Kafolat muddati qancha?</span>
                                 <i data-lucide="chevron-down" class="faq__icon"></i>
                             </button>
                             <div class="faq__content">
-                                <p class="faq__text">
+                                <p class="faq__text" data-i18n="home.faq.a2">
                                     Barcha mahsulotlarimizga 1 yildan 3 yilgacha rasmiy kafolat beriladi. Sifat
                                     sertifikatlari mavjud.
                                 </p>
@@ -248,11 +261,11 @@
                         <!-- Item 3 -->
                         <div class="faq__item">
                             <button class="faq__header">
-                                <span>Mahsulotni qaytarish mumkinmi?</span>
+                                <span data-i18n="home.faq.q4">Mahsulotni qaytarish mumkinmi?</span>
                                 <i data-lucide="chevron-down" class="faq__icon"></i>
                             </button>
                             <div class="faq__content">
-                                <p class="faq__text">
+                                <p class="faq__text" data-i18n="home.faq.a4">
                                     Ha, mahsulot 14 kun ichida zavod nuqsoni aniqlansa yoki ochilmagan qadoqda bo'lsa
                                     qaytarib olinadi.
                                 </p>
@@ -261,13 +274,12 @@
                         <!-- Item 4 -->
                         <div class="faq__item">
                             <button class="faq__header">
-                                <span>To'lov usullari qanday?</span>
+                                <span data-i18n="home.faq.q3">To'lov usullari qanday?</span>
                                 <i data-lucide="chevron-down" class="faq__icon"></i>
                             </button>
                             <div class="faq__content">
-                                <p class="faq__text">
-                                    Naqd pul, karta (UzCard, Humo, Visa), shuningdek bo'lib to'lash (ZoodPay, Anorbank)
-                                    imkoniyatlari mavjud.
+                                <p class="faq__text" data-i18n="home.faq.a3">
+                                    Naqd pul, karta orqali (Payme, Click) va muddatli to'lov xizmatlari mavjud.
                                 </p>
                             </div>
                         </div>
@@ -280,31 +292,29 @@
         <section class="partners section">
             <div class="container">
                 <div class="section__header text-center">
-                    <h2 class="section__title">Bizning hamkorlarimiz</h2>
-                    <p class="section__subtitle">Dunyodagi yetakchi brendlar bilan hamkorlik qilamiz</p>
+                    <h2 class="section__title" data-i18n="about.partners_title">Bizning hamkorlarimiz</h2>
+                    <p class="section__subtitle" data-i18n="about.partners_subtitle">Dunyodagi yetakchi brendlar bilan
+                        hamkorlik qilamiz</p>
                 </div>
-                <div class="partners__slider">
+                <div class="partners__grid">
                     <!-- Logos -->
                     <div class="partner-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung">
+                        <img src="assets/images/brands/samsung.svg" alt="Samsung">
                     </div>
                     <div class="partner-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/LG_logo_%282015%29.svg" alt="LG">
+                        <img src="assets/images/brands/lg.svg" alt="LG">
                     </div>
                     <div class="partner-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Apple-logo.png" alt="Apple"
-                            style="width: 50px;">
+                        <img src="assets/images/brands/apple.svg" alt="Apple">
                     </div>
                     <div class="partner-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Xiaomi_logo.svg" alt="Xiaomi">
+                        <img src="assets/images/brands/xiaomi.svg" alt="Xiaomi">
                     </div>
                     <div class="partner-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Sony_logo.svg/1200px-Sony_logo.svg.png"
-                            alt="Sony">
+                        <img src="assets/images/brands/sony.svg" alt="Sony">
                     </div>
                     <div class="partner-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Bosch-Logo.svg/1024px-Bosch-Logo.svg.png"
-                            alt="Bosch">
+                        <img src="assets/images/brands/bosch.svg" alt="Bosch">
                     </div>
                 </div>
             </div>
@@ -319,14 +329,15 @@
                             <span class="status-dot"></span>
                             Online
                         </div>
-                        <h2 class="call-center__title">24/7 Call Center xizmati</h2>
-                        <p class="call-center__text">Barcha savollaringizga istalgan vaqtda javob berishga tayyormiz.
+                        <h2 class="call-center__title" data-i18n="about.call_center_title">24/7 Call Center xizmati</h2>
+                        <p class="call-center__text" data-i18n="about.call_center_text">Barcha savollaringizga istalgan
+                            vaqtda javob berishga tayyormiz.
                             Bizning mutaxassislarimiz sizga yordam berishadi.</p>
                         <div class="call-center__actions">
                             <a href="tel:1234" class="btn btn--white call-btn">
                                 <i data-lucide="phone-forwarded"></i> 1234
                             </a>
-                            <span class="call-center__hint">Yagona qisqa raqam</span>
+                            <span class="call-center__hint" data-i18n="about.call_center_hint">Yagona qisqa raqam</span>
                         </div>
                     </div>
                     <div class="call-center__illustration">
@@ -335,8 +346,8 @@
                                 <img src="assets/images/support-team.png" alt="Operator">
                             </div>
                             <div class="operator-info">
-                                <strong>Nozima</strong>
-                                <span>Mijozlar bilan ishlash</span>
+                                <strong data-i18n="about.operator_name">Nozima</strong>
+                                <span data-i18n="about.operator_role">Mijozlar bilan ishlash</span>
                             </div>
                         </div>
                         <div class="pulse-circles">
@@ -359,10 +370,10 @@
                         <div class="footer__logo-icon">TH</div>
                         <div class="footer__logo-text">
                             <h3>Tech House</h3>
-                            <span>Smart Living Solutions</span>
+                            <span data-i18n="header.subtitle">Smart Living Solutions</span>
                         </div>
                     </div>
-                    <p class="footer__about">
+                    <p class="footer__about" data-i18n="footer.about">
                         Zamonaviy uy jihozlari va smart home texnologiyalari bo'yicha yetakchi kompaniya.
                     </p>
                     <div class="footer__socials">
@@ -374,29 +385,28 @@
                 </div>
 
                 <div class="footer__col">
-                    <h4 class="footer__title">Tezkor havolalar</h4>
+                    <h4 class="footer__title" data-i18n="footer.col1_title">Tezkor havolalar</h4>
                     <ul class="footer__links">
-                        <li><a href="about.html">Biz haqimizda</a></li>
-                        <li><a href="categories.html">Kategoriyalar</a></li>
-                        <li><a href="#">Solishtirish</a></li>
-                        <li><a href="membership.html">A'zolik dasturi</a></li>
-                        <li><a href="help.html">Yordam markazi</a></li>
+                        <li><a href="about.html" data-i18n="nav.about">Biz haqimizda</a></li>
+                        <li><a href="categories.html" data-i18n="nav.categories">Kategoriyalar</a></li>
+                        <li><a href="membership.html" data-i18n="membership.title">A'zolik dasturi</a></li>
+                        <li><a href="help.html" data-i18n="footer.link_center">Yordam markazi</a></li>
                     </ul>
                 </div>
 
                 <div class="footer__col">
-                    <h4 class="footer__title">Mijozlarga xizmat</h4>
+                    <h4 class="footer__title" data-i18n="footer.col2_title">Mijozlarga xizmat</h4>
                     <ul class="footer__links">
-                        <li><a href="#">Akkaunt</a></li>
-                        <li><a href="#">Savatcha</a></li>
-                        <li><a href="#">Yetkazib berish</a></li>
-                        <li><a href="#">Qaytarish siyosati</a></li>
-                        <li><a href="#">Maxfiylik siyosati</a></li>
+                        <li><a href="#" data-i18n="footer.link_account">Akkaunt</a></li>
+                        <li><a href="#" data-i18n="nav.cart">Savatcha</a></li>
+                        <li><a href="#" data-i18n="footer.link_delivery">Yetkazib berish</a></li>
+                        <li><a href="#" data-i18n="footer.link_refunds">Qaytarish siyosati</a></li>
+                        <li><a href="#" data-i18n="footer.link_privacy">Maxfiylik siyosati</a></li>
                     </ul>
                 </div>
 
                 <div class="footer__col">
-                    <h4 class="footer__title">Aloqa</h4>
+                    <h4 class="footer__title" data-i18n="footer.col3_title">Aloqa</h4>
                     <ul class="footer__contact">
                         <li>
                             <i data-lucide="phone"></i>
@@ -411,18 +421,19 @@
                         </li>
                         <li>
                             <i data-lucide="map-pin"></i>
-                            <span>Toshkent sh., Amir Temur ko'chasi, 123</span>
+                            <span data-i18n="footer.address">Toshkent sh., Amir Temur ko'chasi, 123</span>
                         </li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer__bottom">
-                <p>&copy; 2026 Tech House. Barcha huquqlar himoyalangan.</p>
+                <p data-i18n="footer.copyright">&copy; 2026 Tech House. Barcha huquqlar himoyalangan.</p>
             </div>
         </div>
     </footer>
 
+    <script src="translations.js"></script>
     <script src="script.js"></script>
     <script>
         lucide.createIcons();

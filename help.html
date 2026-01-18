@@ -14,16 +14,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-title-key="title.help">
     <!-- Header -->
     <header class="header">
         <!-- Top Bar -->
         <div class="header__top">
             <div class="container header__top-container">
-                <p class="header__top-text">Bepul yetkazib berish 500,000 so'mdan yuqori xaridlar uchun!</p>
+                <p class="header__top-text" data-i18n="header.free_delivery">Bepul yetkazib berish 500,000 so'mdan
+                    yuqori xaridlar uchun!</p>
                 <div class="header__top-links">
-                    <a href="help.html">Yordam</a>
-                    <a href="membership.html">A'zolik</a>
+                    <div class="lang-switcher">
+                        <button class="lang-btn" onclick="changeLanguage('uz')" data-lang="uz">UZ</button>
+                        <button class="lang-btn active" onclick="changeLanguage('en')" data-lang="en">EN</button>
+                    </div>
+                    <a href="help.html" data-i18n="nav.help">Help</a>
+                    <a href="membership.html" data-i18n="nav.membership">Membership</a>
                 </div>
             </div>
         </div>
@@ -35,14 +40,15 @@
                     <div class="logo-box">TH</div>
                     <div class="logo-text">
                         <span class="logo-title">Tech House</span>
-                        <span class="logo-subtitle">Smart Living Solutions</span>
+                        <span class="logo-subtitle" data-i18n="header.subtitle">Smart Living Solutions</span>
                     </div>
                 </a>
 
                 <div class="header__search">
                     <div class="search-box">
                         <i data-lucide="search"></i>
-                        <input type="text" placeholder="Mahsulotlarni qidiring...">
+                        <input type="text" data-i18n-placeholder="header.search_placeholder"
+                            placeholder="Mahsulotlarni qidiring...">
                     </div>
                 </div>
 
@@ -65,13 +71,18 @@
         <nav class="nav">
             <div class="container nav__container">
                 <ul class="nav__list">
-                    <li><a href="index.html" class="nav__link">Bosh sahifa</a></li>
-                    <li><a href="about.html" class="nav__link">Biz haqimizda</a></li>
-                    <li><a href="categories.html" class="nav__link">Kategoriyalar</a></li>
-                    <li><a href="#" class="nav__link">Solishtirish</a></li>
-                    <li><a href="membership.html" class="nav__link">A'zolik</a></li>
-                    <li><a href="help.html" class="nav__link active">Yordam</a></li>
+                    <li><a href="index.html" class="nav__link" data-i18n="nav.home">Bosh sahifa</a></li>
+                    <li><a href="about.html" class="nav__link" data-i18n="nav.about">Biz haqimizda</a></li>
+                    <li><a href="categories.html" class="nav__link" data-i18n="nav.categories">Kategoriyalar</a></li>
+                    <li><a href="membership.html" class="nav__link" data-i18n="nav.membership">A'zolik</a></li>
+                    <li><a href="help.html" class="nav__link active" data-i18n="nav.help">Yordam</a></li>
                 </ul>
+                <div class="nav__mobile-lang">
+                    <div class="lang-switcher">
+                        <button class="lang-btn" onclick="changeLanguage('uz')" data-lang="uz">UZ</button>
+                        <button class="lang-btn active" onclick="changeLanguage('en')" data-lang="en">EN</button>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
@@ -80,33 +91,38 @@
         <section class="help-section section">
             <div class="container">
                 <div class="section__header">
-                    <h1 class="help__title">Yordam markazi</h1>
-                    <p class="help__subtitle">Sizga qanday yordam bera olamiz?</p>
+                    <h1 class="help__title" data-i18n="help.title">Yordam markazi</h1>
+                    <p class="help__subtitle" data-i18n="help.subtitle">Sizga qanday yordam bera olamiz?</p>
                 </div>
 
                 <div class="help-container--small">
                     <!-- Contact Form -->
                     <div class="help__form-box">
-                        <h2 class="form-title">Biz bilan bog'laning</h2>
+                        <h2 class="form-title" data-i18n="help.form_title">Biz bilan bog'laning</h2>
                         <form action="#" class="contact-form">
                             <div class="form-row">
                                 <div class="form-group">
-                                    <input type="text" placeholder="Ismingiz" required>
+                                    <input type="text" data-i18n-placeholder="help.form_name" placeholder="Ismingiz"
+                                        required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="tel" placeholder="Telefon raqamingiz" required>
+                                    <input type="tel" data-i18n-placeholder="help.form_phone"
+                                        placeholder="Telefon raqamingiz" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" placeholder="Email manzilingiz" required>
+                                <input type="email" data-i18n-placeholder="help.form_email"
+                                    placeholder="Email manzilingiz" required>
                             </div>
                             <div class="form-group">
-                                <input type="text" placeholder="Mavzu">
+                                <input type="text" data-i18n-placeholder="help.form_subject" placeholder="Mavzu">
                             </div>
                             <div class="form-group">
-                                <textarea placeholder="Xabaringiz" rows="4" required></textarea>
+                                <textarea data-i18n-placeholder="help.form_message" placeholder="Xabaringiz" rows="4"
+                                    required></textarea>
                             </div>
-                            <button type="submit" class="btn btn--dark help-submit-btn">Yuborish</button>
+                            <button type="submit" class="btn btn--dark help-submit-btn"
+                                data-i18n="help.form_submit">Yuborish</button>
                         </form>
                     </div>
                 </div>
@@ -118,14 +134,15 @@
                             <span class="status-dot"></span>
                             Online
                         </div>
-                        <h2 class="call-center__title">24/7 Call Center xizmati</h2>
-                        <p class="call-center__text">Bizning operatorlarimiz sizga har qanday savol bo'yicha yordam
+                        <h2 class="call-center__title" data-i18n="about.call_center_title">24/7 Call Center xizmati</h2>
+                        <p class="call-center__text" data-i18n="help.subtitle">Bizning operatorlarimiz sizga har qanday
+                            savol bo'yicha yordam
                             berishga tayyor. To'g'ridan-to'g'ri bog'laning!</p>
                         <div class="call-center__actions">
                             <a href="tel:1234" class="btn btn--white call-btn">
                                 <i data-lucide="phone-forwarded"></i> 1234
                             </a>
-                            <span class="call-center__hint">Yagona qisqa raqam</span>
+                            <span class="call-center__hint" data-i18n="about.call_center_hint">Yagona qisqa raqam</span>
                         </div>
                     </div>
                     <div class="call-center__illustration">
@@ -135,8 +152,8 @@
                                     alt="Operator">
                             </div>
                             <div class="operator-info">
-                                <strong>Malika</strong>
-                                <span>Katta operator</span>
+                                <strong data-i18n="help.operator_name">Malika</strong>
+                                <span data-i18n="help.operator_role">Katta operator</span>
                             </div>
                         </div>
                         <div class="pulse-circles">
@@ -159,10 +176,10 @@
                         <div class="footer__logo-icon">TH</div>
                         <div class="footer__logo-text">
                             <h3>Tech House</h3>
-                            <span>Smart Living Solutions</span>
+                            <span data-i18n="header.subtitle">Smart Living Solutions</span>
                         </div>
                     </div>
-                    <p class="footer__about">
+                    <p class="footer__about" data-i18n="footer.about">
                         Zamonaviy uy jihozlari va smart home texnologiyalari bo'yicha yetakchi kompaniya.
                     </p>
                     <div class="footer__socials">
@@ -174,28 +191,28 @@
                 </div>
 
                 <div class="footer__col">
-                    <h4 class="footer__title">Tezkor havolalar</h4>
+                    <h4 class="footer__title" data-i18n="footer.col1_title">Tezkor havolalar</h4>
                     <ul class="footer__links">
-                        <li><a href="categories.html">Kategoriyalar</a></li>
-                        <li><a href="#">Solishtirish</a></li>
-                        <li><a href="membership.html">A'zolik dasturi</a></li>
-                        <li><a href="help.html">Yordam markazi</a></li>
+                        <li><a href="about.html" data-i18n="nav.about">Biz haqimizda</a></li>
+                        <li><a href="categories.html" data-i18n="nav.categories">Kategoriyalar</a></li>
+                        <li><a href="membership.html" data-i18n="membership.title">A'zolik dasturi</a></li>
+                        <li><a href="help.html" data-i18n="footer.link_center">Yordam markazi</a></li>
                     </ul>
                 </div>
 
                 <div class="footer__col">
-                    <h4 class="footer__title">Mijozlarga xizmat</h4>
+                    <h4 class="footer__title" data-i18n="footer.col2_title">Mijozlarga xizmat</h4>
                     <ul class="footer__links">
-                        <li><a href="#">Akkaunt</a></li>
-                        <li><a href="#">Savatcha</a></li>
-                        <li><a href="#">Yetkazib berish</a></li>
-                        <li><a href="#">Qaytarish siyosati</a></li>
-                        <li><a href="#">Maxfiylik siyosati</a></li>
+                        <li><a href="#" data-i18n="footer.link_account">Akkaunt</a></li>
+                        <li><a href="#" data-i18n="nav.cart">Savatcha</a></li>
+                        <li><a href="#" data-i18n="footer.link_delivery">Yetkazib berish</a></li>
+                        <li><a href="#" data-i18n="footer.link_refunds">Qaytarish siyosati</a></li>
+                        <li><a href="#" data-i18n="footer.link_privacy">Maxfiylik siyosati</a></li>
                     </ul>
                 </div>
 
                 <div class="footer__col">
-                    <h4 class="footer__title">Aloqa</h4>
+                    <h4 class="footer__title" data-i18n="footer.col3_title">Aloqa</h4>
                     <ul class="footer__contact">
                         <li>
                             <i data-lucide="phone"></i>
@@ -210,18 +227,19 @@
                         </li>
                         <li>
                             <i data-lucide="map-pin"></i>
-                            <span>Toshkent sh., Amir Temur ko'chasi, 123</span>
+                            <span data-i18n="footer.address">Toshkent sh., Amir Temur ko'chasi, 123</span>
                         </li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer__bottom">
-                <p>&copy; 2026 Tech House. Barcha huquqlar himoyalangan.</p>
+                <p data-i18n="footer.copyright">&copy; 2026 Tech House. Barcha huquqlar himoyalangan.</p>
             </div>
         </div>
     </footer>
 
+    <script src="translations.js"></script>
     <script src="script.js"></script>
     <script>
         lucide.createIcons();
