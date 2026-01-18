@@ -979,6 +979,12 @@ function updateContent() {
         element.title = t(key);
     });
 
+    // Dynamic placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        element.placeholder = t(key);
+    });
+
     // Update document title
     const pageKey = document.body.dataset.titleKey;
     if (pageKey) {

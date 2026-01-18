@@ -113,6 +113,29 @@
                             </button>
                         </div>
 
+                        <!-- Delivery Info Inputs -->
+                        <div id="delivery-info" class="delivery-info">
+                            <div class="form-group">
+                                <label for="delivery-address" class="input-label"
+                                    data-i18n="cart.address_label">Manzil</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="map-pin"></i>
+                                    <input type="text" id="delivery-address" class="form-input"
+                                        placeholder="Ko'cha, uy, xonadon..."
+                                        data-i18n-placeholder="cart.address_placeholder">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="delivery-phone" class="input-label" data-i18n="cart.phone_label">Telefon
+                                    raqam</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="phone"></i>
+                                    <input type="tel" id="delivery-phone" class="form-input"
+                                        placeholder="+998 90 123 45 67" data-i18n-placeholder="cart.phone_placeholder">
+                                </div>
+                            </div>
+                        </div>
+
                         <div id="pickup-info" class="pickup-info" style="display: none;">
                             <p class="pickup-label"><i data-lucide="info"></i> Filialni tanlang:</p>
                             <select id="branch-select" class="branch-select" onchange="updatePickupBranch()">
@@ -271,7 +294,10 @@
 
             // Show/hide pickup info
             const pickupInfo = document.getElementById('pickup-info');
+            const deliveryInfo = document.getElementById('delivery-info');
+
             pickupInfo.style.display = method === 'pickup' ? 'block' : 'none';
+            deliveryInfo.style.display = method === 'delivery' ? 'block' : 'none';
 
             if (method === 'pickup') {
                 populateBranches();

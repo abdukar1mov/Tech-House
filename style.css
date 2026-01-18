@@ -4206,3 +4206,26 @@ button {
     border-color: var(--accent);
     color: white;
 }
+
+/* Input Wrapper for Icons */
+.input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.input-wrapper svg {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: var(--muted-foreground);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.input-wrapper .form-input {
+    padding-left: 3rem;
+    /* Space for the icon */
+}
