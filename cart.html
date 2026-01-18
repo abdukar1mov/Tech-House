@@ -19,10 +19,11 @@
         <!-- Top Bar -->
         <div class="header__top">
             <div class="container header__top-container">
-                <p class="header__top-text">Bepul yetkazib berish 500,000 so'mdan yuqori xaridlar uchun!</p>
+                <p class="header__top-text" data-i18n="header.free_delivery">Bepul yetkazib berish 500,000 so'mdan
+                    yuqori xaridlar uchun!</p>
                 <div class="header__top-links">
-                    <a href="help.html">Yordam</a>
-                    <a href="membership.html">A'zolik</a>
+                    <a href="help.html" data-i18n="nav.help">Yordam</a>
+                    <a href="membership.html" data-i18n="nav.membership">A'zolik</a>
                 </div>
             </div>
         </div>
@@ -34,18 +35,23 @@
                     <div class="logo-box">TH</div>
                     <div class="logo-text">
                         <span class="logo-title">Tech House</span>
-                        <span class="logo-subtitle">Smart Living Solutions</span>
+                        <span class="logo-subtitle" data-i18n="header.subtitle">Smart Living Solutions</span>
                     </div>
                 </a>
 
                 <div class="header__search">
                     <div class="search-box">
                         <i data-lucide="search"></i>
-                        <input type="text" placeholder="Mahsulotlarni qidiring...">
+                        <input type="text" placeholder="Mahsulotlarni qidiring..."
+                            data-i18n="header.search_placeholder">
                     </div>
                 </div>
 
                 <div class="header__user-actions">
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" onclick="changeLanguage('uz')" data-lang="uz">UZ</button>
+                        <button class="lang-btn" onclick="changeLanguage('en')" data-lang="en">EN</button>
+                    </div>
                     <button class="user-action-btn"><i data-lucide="user"></i></button>
                     <a href="cart.html" class="user-action-btn active">
                         <i data-lucide="shopping-cart"></i>
@@ -64,12 +70,12 @@
         <nav class="nav">
             <div class="container nav__container">
                 <ul class="nav__list">
-                    <li><a href="index.html" class="nav__link">Bosh sahifa</a></li>
-                    <li><a href="about.html" class="nav__link">Biz haqimizda</a></li>
-                    <li><a href="categories.html" class="nav__link">Kategoriyalar</a></li>
-                    <li><a href="#" class="nav__link">Solishtirish</a></li>
-                    <li><a href="membership.html" class="nav__link">A'zolik</a></li>
-                    <li><a href="help.html" class="nav__link">Yordam</a></li>
+                    <li><a href="index.html" class="nav__link" data-i18n="nav.home">Bosh sahifa</a></li>
+                    <li><a href="about.html" class="nav__link" data-i18n="nav.about">Biz haqimizda</a></li>
+                    <li><a href="categories.html" class="nav__link" data-i18n="nav.categories">Kategoriyalar</a></li>
+                    <li><a href="#" class="nav__link" data-i18n="nav.compare">Solishtirish</a></li>
+                    <li><a href="membership.html" class="nav__link" data-i18n="nav.membership">A'zolik</a></li>
+                    <li><a href="help.html" class="nav__link" data-i18n="nav.help">Yordam</a></li>
                 </ul>
             </div>
         </nav>
@@ -77,7 +83,8 @@
 
     <main class="main-content">
         <div class="container">
-            <h1 class="section__title">Savatcha (<span id="cart-title-count">0</span> mahsulot)</h1>
+            <h1 class="section__title"><span data-i18n="cart.title">Savatcha</span> (<span
+                    id="cart-title-count">0</span>)</h1>
 
             <div class="cart-grid">
                 <!-- Cart Items -->
@@ -88,16 +95,16 @@
                 <!-- Order Summary -->
                 <aside class="cart-summary">
                     <div class="summary-card">
-                        <h3>Buyurtma xulasasi</h3>
+                        <h3 data-i18n="cart.order_summary">Buyurtma xulasasi</h3>
 
                         <!-- Delivery Method Selector -->
                         <div class="delivery-methods">
                             <button id="method-delivery" class="method-btn active"
                                 onclick="setDeliveryMethod('delivery')">
-                                <i data-lucide="truck"></i> Yetkazib berish
+                                <i data-lucide="truck"></i> <span data-i18n="cart.delivery">Yetkazib berish</span>
                             </button>
                             <button id="method-pickup" class="method-btn" onclick="setDeliveryMethod('pickup')">
-                                <i data-lucide="map-pin"></i> Olib ketish
+                                <i data-lucide="map-pin"></i> <span data-i18n="cart.pickup">Olib ketish</span>
                             </button>
                         </div>
 
@@ -112,12 +119,13 @@
                         </div>
 
                         <div class="summary-row">
-                            <span>Mahsulotlar (<span id="summary-count">0</span>):</span>
+                            <span><span data-i18n="cart.products">Mahsulotlar</span> (<span
+                                    id="summary-count">0</span>):</span>
                             <span id="summary-subtotal">$0.00</span>
                         </div>
                         <div class="summary-row">
-                            <span>Yetkazib berish:</span>
-                            <span id="shipping-amount" class="free-text">Bepul</span>
+                            <span data-i18n="cart.delivery">Yetkazib berish:</span>
+                            <span id="shipping-amount" class="free-text" data-i18n="cart.free">Bepul</span>
                         </div>
                         <div class="summary-divider"></div>
                         <div id="membership-discount-row" class="summary-row discount" style="display: none;">
@@ -125,10 +133,10 @@
                             <span id="membership-discount-amount">-$0.00</span>
                         </div>
                         <div class="summary-row total">
-                            <span>Jami:</span>
+                            <span data-i18n="cart.total">Jami:</span>
                             <span id="summary-total">$0.00</span>
                         </div>
-                        <button class="btn btn--primary w-100 mt-4">Rasmiylashtirish</button>
+                        <button class="btn btn--primary w-100 mt-4" data-i18n="cart.checkout">Rasmiylashtirish</button>
 
                         <div id="membership-perks-box" class="membership-perks-box" style="display: none;">
                             <h4>Sizning imtiyozlaringiz:</h4>
@@ -136,7 +144,8 @@
                         </div>
 
                         <p class="secure-text">
-                            <i data-lucide="shield-check"></i> Xavfsiz to'lov va maxfiylik kafolati
+                            <i data-lucide="shield-check"></i> <span data-i18n="cart.secure">Xavfsiz to'lov va maxfiylik
+                                kafolati</span>
                         </p>
                     </div>
                 </aside>
@@ -216,6 +225,7 @@
         </div>
     </footer>
 
+    <script src="translations.js"></script>
     <script src="script.js"></script>
     <script>
         const BRANCHES = [
@@ -286,9 +296,9 @@
                 container.innerHTML = `
                     <div class="empty-cart">
                         <i data-lucide="shopping-cart"></i>
-                        <h2>Savat bo'sh</h2>
-                        <p>Hali birorta mahsulot qo'shmadingiz</p>
-                        <a href="categories.html" class="btn btn--primary">Xarid qilishni boshlash</a>
+                        <h2>${t('cart.empty')}</h2>
+                        <p>${t('cart.empty_desc')}</p>
+                        <a href="categories.html" class="btn btn--primary">${t('cart.start_shopping')}</a>
                     </div>
                 `;
                 titleCount.textContent = "0";
@@ -324,7 +334,7 @@
                                     </button>
                                 </div>
                                 <button class="delete-btn" onclick="removeFromCart(${item.id})">
-                                    <i data-lucide="trash-2"></i> O'chirish
+                                    <i data-lucide="trash-2"></i> ${t('cart.remove')}
                                 </button>
                             </div>
                         </div>
@@ -396,7 +406,7 @@
             const shippingAmountEl = document.getElementById('shipping-amount');
             if (shippingCost === 0) {
                 shippingAmountEl.className = 'free-text';
-                shippingAmountEl.textContent = 'Bepul';
+                shippingAmountEl.textContent = t('cart.free');
             } else {
                 shippingAmountEl.className = '';
                 shippingAmountEl.textContent = `$${shippingCost.toFixed(2)}`;
@@ -418,6 +428,17 @@
             if (window.lucide) window.lucide.createIcons();
             renderCartPage();
         });
+        // Re-render when content updates (language change)
+        // We need to override variables or just hook into the global function if possible.
+        // But updateContent is defined in script.js. redefining it here might be tricky if script.js loads later or earlier.
+        // Actually script.js is loaded BEFORE this script block. So window.updateContent exists.
+
+        const originalUpdateContent = window.updateContent;
+        window.updateContent = function () {
+            if (originalUpdateContent) originalUpdateContent();
+            renderCartPage();
+        }
+
     </script>
 </body>
 

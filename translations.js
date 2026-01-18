@@ -1,0 +1,127 @@
+
+const translations = {
+    uz: {
+        "nav.home": "Bosh sahifa",
+        "nav.about": "Biz haqimizda",
+        "nav.categories": "Kategoriyalar",
+        "nav.compare": "Solishtirish",
+        "nav.membership": "A'zolik",
+        "nav.help": "Yordam",
+        "header.free_delivery": "Bepul yetkazib berish 500,000 so'mdan yuqori xaridlar uchun!",
+        "header.search_placeholder": "Mahsulotlarni qidiring...",
+        "header.subtitle": "Smart Living Solutions",
+
+        "hero.title": "Kelajak uyingizni bugun quring",
+        "hero.description": "Eng so'nggi smart texnologiyalar va uy jihozlari bilan hayotingizni qulayroq va xavfsizroq qiling.",
+        "hero.shop_now": "Xarid qilish",
+        "hero.learn_more": "Batafsil",
+
+        "filters.title": "Filtrlar",
+        "filters.categories": "Kategoriyalar",
+        "filters.price_range": "Narx oralig'i",
+        "filters.clear": "Filtrlarni tozalash",
+        "filters.found": "mahsulot topildi",
+        "filters.sort.popular": "Mashhur",
+        "filters.sort.new": "Yangi",
+        "filters.sort.price_asc": "Arzonroq",
+        "filters.sort.price_desc": "Qimmatroq",
+
+        "product.add_to_cart": "Savatga qo'shish",
+        "product.new": "Yangi",
+        "product.discount": "Chegirma",
+
+        "footer.about": "Zamonaviy uy jihozlari va smart home texnologiyalari bo'yicha yetakchi kompaniya.",
+        "footer.quick_links": "Tezkor havolalar",
+        "footer.customer_service": "Mijozlarga xizmat",
+        "footer.contact": "Aloqa",
+        "footer.rights": "Barcha huquqlar himoyalangan.",
+
+        "tabs.specs": "Texnik xususiyatlar",
+        "tabs.warranty": "Kafolat",
+        "tabs.delivery": "Yetkazib berish",
+
+        "specs.capacity": "Hajmi",
+        "specs.power": "Quvvat",
+        "specs.color": "Rangi",
+        "specs.weight": "Og'irligi",
+
+        "warranty.text": "Ushbu mahsulot uchun rasmiy kafolat taqdim etiladi.",
+        "delivery.text": "Toshkent bo'ylab 24 soat ichida, viloyatlarga 2-3 ish kuni ichida yetkazib beriladi. 500,000 so'mdan yuqori xaridlar uchun yetkazib berish bepul.",
+
+        "cart.title": "Savatcha",
+        "cart.empty": "Savatchangiz bo'sh",
+        "cart.empty_desc": "Hali birorta mahsulot qo'shmadingiz",
+        "cart.start_shopping": "Xarid qilishni boshlash",
+        "cart.remove": "O'chirish",
+        "cart.order_summary": "Buyurtma xulasasi",
+        "cart.delivery": "Yetkazib berish",
+        "cart.pickup": "Olib ketish",
+        "cart.products": "Mahsulotlar",
+        "cart.total": "Jami",
+        "cart.checkout": "Rasmiylashtirish",
+        "cart.secure": "Xavfsiz to'lov va maxfiylik kafolati",
+        "cart.free": "Bepul"
+    },
+    en: {
+        "nav.home": "Home",
+        "nav.about": "About Us",
+        "nav.categories": "Categories",
+        "nav.compare": "Compare",
+        "nav.membership": "Membership",
+        "nav.help": "Help",
+        "header.free_delivery": "Free delivery for orders over 500,000 UZS!",
+        "header.search_placeholder": "Search products...",
+        "header.subtitle": "Smart Living Solutions",
+
+        "hero.title": "Build Your Future Home Today",
+        "hero.description": "Make your life more comfortable and secure with the latest smart technologies and home appliances.",
+        "hero.shop_now": "Shop Now",
+        "hero.learn_more": "Learn More",
+
+        "filters.title": "Filters",
+        "filters.categories": "Categories",
+        "filters.price_range": "Price Range",
+        "filters.clear": "Clear Filters",
+        "filters.found": "products found",
+        "filters.sort.popular": "Popular",
+        "filters.sort.new": "New",
+        "filters.sort.price_asc": "Price: Low to High",
+        "filters.sort.price_desc": "Price: High to Low",
+
+        "product.add_to_cart": "Add to Cart",
+        "product.new": "New",
+        "product.discount": "Discount",
+
+        "footer.about": "Leading company in modern home appliances and smart home technologies.",
+        "footer.quick_links": "Quick Links",
+        "footer.customer_service": "Customer Service",
+        "footer.contact": "Contact",
+        "footer.rights": "All rights reserved.",
+
+        "tabs.specs": "Technical Specs",
+        "tabs.warranty": "Warranty",
+        "tabs.delivery": "Delivery",
+
+        "specs.capacity": "Capacity",
+        "specs.power": "Power",
+        "specs.color": "Color",
+        "specs.weight": "Weight",
+
+        "warranty.text": "Official warranty is provided for this product.",
+        "delivery.text": "Delivery within 24 hours in Tashkent, 2-3 business days to regions. Free delivery for orders over 500,000 UZS.",
+
+        "cart.title": "Cart",
+        "cart.empty": "Your cart is empty",
+        "cart.empty_desc": "You haven't added any items yet",
+        "cart.start_shopping": "Start Shopping",
+        "cart.remove": "Remove",
+        "cart.order_summary": "Order Summary",
+        "cart.delivery": "Delivery",
+        "cart.pickup": "Pickup",
+        "cart.products": "Products",
+        "cart.total": "Total",
+        "cart.checkout": "Checkout",
+        "cart.secure": "Secure payment and privacy guarantee",
+        "cart.free": "Free"
+    }
+};

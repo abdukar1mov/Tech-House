@@ -494,10 +494,8 @@ function drawProducts(filteredProducts, containerId) {
     if (window.lucide) window.lucide.createIcons();
 
     // Update count if elements exist
-    var countEl = document.querySelector(".products-count");
-    if (countEl) {
-        countEl.textContent = listToDraw.length + " mahsulot topildi";
-    }
+    const countSpan = document.querySelector(".products-count");
+    if (countSpan) countSpan.textContent = `${listToDraw.length} ${t('filters.found')}`;
 }
 
 // 3. Filterlash logikasi
@@ -791,9 +789,9 @@ function loadProductDetail() {
     var tabsHtml = `
         <div class="product-tabs">
             <div class="tab-buttons">
-                <button class="tab-btn active" onclick="switchTab(event, 'specs')">Texnik xususiyatlar</button>
-                <button class="tab-btn" onclick="switchTab(event, 'warranty')">Kafolat</button>
-                <button class="tab-btn" onclick="switchTab(event, 'delivery')">Yetkazib berish</button>
+                <button class="tab-btn active" onclick="switchTab(event, 'specs')">${t('tabs.specs')}</button>
+                <button class="tab-btn" onclick="switchTab(event, 'warranty')">${t('tabs.warranty')}</button>
+                <button class="tab-btn" onclick="switchTab(event, 'delivery')">${t('tabs.delivery')}</button>
             </div>
             <div class="tab-content-box">
                 <div id="specs" class="tab-pane active">
@@ -802,10 +800,10 @@ function loadProductDetail() {
                     </div>
                 </div>
                 <div id="warranty" class="tab-pane">
-                    <p class="product-detail__desc">${product.warranty || 'Ushbu mahsulot uchun rasmiy kafolat taqdim etiladi.'}</p>
+                    <p class="product-detail__desc">${product.warranty || t('warranty.text')}</p>
                 </div>
                 <div id="delivery" class="tab-pane">
-                    <p class="product-detail__desc">Toshkent bo'ylab 24 soat ichida, viloyatlarga 2-3 ish kuni ichida yetkazib beriladi. 500,000 so'mdan yuqori xaridlar uchun yetkazib berish bepul.</p>
+                    <p class="product-detail__desc">${t('delivery.text')}</p>
                 </div>
             </div>
         </div>
@@ -859,6 +857,76 @@ function initNav() {
     });
 }
 
+// 8. Tabs Logic
+function switchTab(event, tabId) {
+    // Remove active class from all buttons
+    const buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    // Remove active class from all panes
+    const panes = document.querySelectorAll('.tab-pane');
+    panes.forEach(pane => pane.classList.remove('active'));
+
+    // Add active class to clicked button
+    event.currentTarget.classList.add('active');
+
+    // Add active class to target pane
+    const targetPane = document.getElementById(tabId);
+    if (targetPane) {
+        targetPane.classList.add('active');
+    }
+}
+
+// 9. Localization Logic
+let currentLang = localStorage.getItem('lang') || 'uz';
+
+function changeLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    updateContent();
+    updateActiveLangButton();
+}
+
+function updateActiveLangButton() {
+    const buttons = document.querySelectorAll('.lang-btn');
+    buttons.forEach(btn => {
+        if (btn.dataset.lang === currentLang) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+}
+
+function t(key) {
+    if (typeof translations === 'undefined') return key;
+    return translations[currentLang][key] || key;
+}
+
+function updateContent() {
+    // Static content
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (element.tagName === 'INPUT' && element.getAttribute('placeholder')) {
+            // skip for now or handle specific placeholders
+        } else {
+            element.textContent = t(key);
+        }
+
+        if (key === 'header.search_placeholder') {
+            element.placeholder = t(key);
+        }
+    });
+
+    updateActiveLangButton();
+    updateCartUI(); // Refresh cart UI which might have text
+
+    // Refresh products if they are on screen (to update button text etc)
+    if (document.getElementById("categories-products-grid")) applyFilters();
+    if (document.getElementById("product-detail-container")) loadProductDetail();
+}
+
+
 // Sahifa yuklanganda ishga tushiruvchi kod
 window.onload = function () {
     // Categories page products container
@@ -886,4 +954,7 @@ window.onload = function () {
     initFilterListeners();
     initFAQ();
     initNav();
+
+    // Initialize Localization
+    updateContent();
 };
