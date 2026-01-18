@@ -973,6 +973,12 @@ function updateContent() {
         }
     });
 
+    // Dynamic titles (tooltips)
+    document.querySelectorAll('[data-i18n-title]').forEach(element => {
+        const key = element.getAttribute('data-i18n-title');
+        element.title = t(key);
+    });
+
     // Update document title
     const pageKey = document.body.dataset.titleKey;
     if (pageKey) {
