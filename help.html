@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yordam markazi - Tech House</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <!-- Top Bar -->
+        <div class="header__top">
+            <div class="container header__top-container">
+                <p class="header__top-text">Bepul yetkazib berish 500,000 so'mdan yuqori xaridlar uchun!</p>
+                <div class="header__top-links">
+                    <a href="help.html">Yordam</a>
+                    <a href="membership.html">A'zolik</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Header -->
+        <div class="header__main">
+            <div class="container header__main-container">
+                <a href="index.html" class="logo-wrapper">
+                    <div class="logo-box">TH</div>
+                    <div class="logo-text">
+                        <span class="logo-title">Tech House</span>
+                        <span class="logo-subtitle">Smart Living Solutions</span>
+                    </div>
+                </a>
+
+                <div class="header__search">
+                    <div class="search-box">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Mahsulotlarni qidiring...">
+                    </div>
+                </div>
+
+                <div class="header__user-actions">
+                    <button class="user-action-btn"><i data-lucide="user"></i></button>
+                    <a href="cart.html" class="user-action-btn">
+                        <i data-lucide="shopping-cart"></i>
+                        <span class="nav__badge">0</span>
+                    </a>
+                    <button id="nav-toggle" class="nav__toggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav__overlay" id="nav-overlay"></div>
+
+        <!-- Bottom Navigation -->
+        <nav class="nav">
+            <div class="container nav__container">
+                <ul class="nav__list">
+                    <li><a href="index.html" class="nav__link">Bosh sahifa</a></li>
+                    <li><a href="about.html" class="nav__link">Biz haqimizda</a></li>
+                    <li><a href="categories.html" class="nav__link">Kategoriyalar</a></li>
+                    <li><a href="#" class="nav__link">Solishtirish</a></li>
+                    <li><a href="membership.html" class="nav__link">A'zolik</a></li>
+                    <li><a href="help.html" class="nav__link active">Yordam</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="help-section section">
+            <div class="container">
+                <div class="section__header">
+                    <h1 class="help__title">Yordam markazi</h1>
+                    <p class="help__subtitle">Sizga qanday yordam bera olamiz?</p>
+                </div>
+
+                <div class="help-container--small">
+                    <!-- Contact Form -->
+                    <div class="help__form-box">
+                        <h2 class="form-title">Biz bilan bog'laning</h2>
+                        <form action="#" class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Ismingiz" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" placeholder="Telefon raqamingiz" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Email manzilingiz" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Mavzu">
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Xabaringiz" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn--dark help-submit-btn">Yuborish</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Call Center Section -->
+                <div class="call-center-banner">
+                    <div class="call-center__content">
+                        <div class="call-center__status">
+                            <span class="status-dot"></span>
+                            Online
+                        </div>
+                        <h2 class="call-center__title">24/7 Call Center xizmati</h2>
+                        <p class="call-center__text">Bizning operatorlarimiz sizga har qanday savol bo'yicha yordam
+                            berishga tayyor. To'g'ridan-to'g'ri bog'laning!</p>
+                        <div class="call-center__actions">
+                            <a href="tel:1234" class="btn btn--white call-btn">
+                                <i data-lucide="phone-forwarded"></i> 1234
+                            </a>
+                            <span class="call-center__hint">Yagona qisqa raqam</span>
+                        </div>
+                    </div>
+                    <div class="call-center__illustration">
+                        <div class="operator-card">
+                            <div class="operator-img">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=200"
+                                    alt="Operator">
+                            </div>
+                            <div class="operator-info">
+                                <strong>Malika</strong>
+                                <span>Katta operator</span>
+                            </div>
+                        </div>
+                        <div class="pulse-circles">
+                            <div class="circle circle-1"></div>
+                            <div class="circle circle-2"></div>
+                            <div class="circle circle-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__col">
+                    <div class="footer__logo">
+                        <div class="footer__logo-icon">TH</div>
+                        <div class="footer__logo-text">
+                            <h3>Tech House</h3>
+                            <span>Smart Living Solutions</span>
+                        </div>
+                    </div>
+                    <p class="footer__about">
+                        Zamonaviy uy jihozlari va smart home texnologiyalari bo'yicha yetakchi kompaniya.
+                    </p>
+                    <div class="footer__socials">
+                        <a href="#"><i data-lucide="facebook"></i></a>
+                        <a href="#"><i data-lucide="instagram"></i></a>
+                        <a href="#"><i data-lucide="twitter"></i></a>
+                        <a href="#"><i data-lucide="youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Tezkor havolalar</h4>
+                    <ul class="footer__links">
+                        <li><a href="categories.html">Kategoriyalar</a></li>
+                        <li><a href="#">Solishtirish</a></li>
+                        <li><a href="membership.html">A'zolik dasturi</a></li>
+                        <li><a href="help.html">Yordam markazi</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Mijozlarga xizmat</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Akkaunt</a></li>
+                        <li><a href="#">Savatcha</a></li>
+                        <li><a href="#">Yetkazib berish</a></li>
+                        <li><a href="#">Qaytarish siyosati</a></li>
+                        <li><a href="#">Maxfiylik siyosati</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Aloqa</h4>
+                    <ul class="footer__contact">
+                        <li>
+                            <i data-lucide="phone"></i>
+                            <div>
+                                <span>+998 71 123 45 67</span>
+                                <span>+998 90 123 45 67</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i data-lucide="mail"></i>
+                            <span>info@techhouse.uz</span>
+                        </li>
+                        <li>
+                            <i data-lucide="map-pin"></i>
+                            <span>Toshkent sh., Amir Temur ko'chasi, 123</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2026 Tech House. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

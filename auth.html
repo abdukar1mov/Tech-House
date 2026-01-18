@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akkaunt - Tech House</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <!-- Top Bar -->
+        <div class="header__top">
+            <div class="container header__top-container">
+                <p class="header__top-text">Bepul yetkazib berish 500,000 so'mdan yuqori xaridlar uchun!</p>
+                <div class="header__top-links">
+                    <a href="help.html">Yordam</a>
+                    <a href="membership.html">A'zolik</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Header -->
+        <div class="header__main">
+            <div class="container header__main-container">
+                <a href="index.html" class="logo-wrapper">
+                    <div class="logo-box">TH</div>
+                    <div class="logo-text">
+                        <span class="logo-title">Tech House</span>
+                        <span class="logo-subtitle">Smart Living Solutions</span>
+                    </div>
+                </a>
+
+                <div class="header__search">
+                    <div class="search-box">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Mahsulotlarni qidiring...">
+                    </div>
+                </div>
+
+                <div class="header__user-actions">
+                    <button class="user-action-btn"><i data-lucide="user"></i></button>
+                    <a href="cart.html" class="user-action-btn">
+                        <i data-lucide="shopping-cart"></i>
+                        <span class="nav__badge">0</span>
+                    </a>
+                    <button id="nav-toggle" class="nav__toggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav__overlay" id="nav-overlay"></div>
+
+        <!-- Bottom Navigation -->
+        <nav class="nav">
+            <div class="container nav__container">
+                <ul class="nav__list">
+                    <li><a href="index.html" class="nav__link">Bosh sahifa</a></li>
+                    <li><a href="about.html" class="nav__link">Biz haqimizda</a></li>
+                    <li><a href="categories.html" class="nav__link">Kategoriyalar</a></li>
+                    <li><a href="#" class="nav__link">Solishtirish</a></li>
+                    <li><a href="membership.html" class="nav__link">A'zolik</a></li>
+                    <li><a href="help.html" class="nav__link">Yordam</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container container--small">
+            <h1 class="auth-title">Akkaunt</h1>
+
+            <div class="auth-card">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login">Kirish</button>
+                    <button class="auth-tab" data-tab="register">Ro'yxatdan o'tish</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="login-form" class="auth-form active">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="login-email" placeholder="Email manzilingiz" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Parol</label>
+                        <input type="password" id="login-password" placeholder="Parolingiz" required>
+                    </div>
+                    <button type="submit" class="btn btn--dark auth-submit">Kirish</button>
+                    <a href="#" class="forgot-password">Parolni unutdingizmi?</a>
+                </form>
+
+                <!-- Register Form -->
+                <form id="register-form" class="auth-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Ism</label>
+                            <input type="text" id="reg-firstname" placeholder="Ismingiz" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Familiya</label>
+                            <input type="text" id="reg-lastname" placeholder="Familiyangiz" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefon raqami</label>
+                        <input type="tel" id="reg-phone" placeholder="Telefon raqamingiz" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="reg-email" placeholder="Email manzilingiz" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Parol</label>
+                        <input type="password" id="reg-password" placeholder="Parol yarating" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Parolni tasdiqlang</label>
+                        <input type="password" id="reg-confirm-password" placeholder="Parolni qayta kiriting" required>
+                    </div>
+                    <button type="submit" class="btn btn--dark auth-submit">Ro'yxatdan o'tish</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__bottom" style="border: none; padding-top: 2rem;">
+                <p>&copy; 2026 Tech House. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Tab switching logic
+        const tabs = document.querySelectorAll('.auth-tab');
+        const forms = document.querySelectorAll('.auth-form');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.dataset.tab;
+
+                tabs.forEach(t => t.classList.remove('active'));
+                forms.forEach(f => f.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(`${target}-form`).classList.add('active');
+            });
+        });
+
+        // Initialize Icons
+        if (window.lucide) window.lucide.createIcons();
+    </script>
+</body>
+
+</html>
