@@ -593,7 +593,7 @@ function initFilterListeners() {
 
     const minGap = 50;
     const sliderTrack = document.querySelector(".slider-track");
-    const sliderMaxValue = document.querySelector(".range-min").max;
+    const sliderMaxValue = rangeMin ? rangeMin.max : 1000;
 
     function fillColor() {
         if (!rangeMin || !rangeMax || !sliderTrack) return;
